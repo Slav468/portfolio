@@ -1,0 +1,217 @@
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+
+  a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--color-accent-cyan);
+    }
+  }
+
+  .separator {
+    color: var(--color-text-muted);
+  }
+}
+
+.projectHeader {
+  margin-bottom: 3rem;
+}
+
+.categoryBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.875rem;
+  border-radius: 999px;
+  background: color-mix(in oklch, var(--color-accent-cyan) 12%, var(--color-bg-base));
+  color: var(--color-accent-cyan);
+  border: 1px solid color-mix(in oklch, var(--color-accent-cyan) 30%, transparent);
+  margin-bottom: 1rem;
+  width: fit-content;
+}
+
+.projectDate {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-left: 1rem;
+}
+
+.projectTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--color-text-primary);
+  margin: 0 0 1rem 0;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.projectDescription {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 48rem;
+  margin: 0;
+}
+
+.projectContent {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.projectImage {
+  width: 100%;
+  height: 32rem;
+  background: linear-gradient(135deg, var(--color-bg-surface), var(--color-bg-elevated));
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklch, var(--color-accent-cyan) 10%, transparent) 0%,
+      color-mix(in oklch, var(--color-accent-purple) 10%, transparent) 100%
+    );
+    opacity: 0.6;
+  }
+}
+
+.projectInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.infoTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0 0 1rem 0;
+}
+
+.infoText {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.stackSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.stackTitle {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.stackList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.stackTag {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  background: var(--color-bg-base);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.actionLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.875rem 1.75rem;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  max-width: fit-content;
+
+  &:first-child {
+    background: var(--color-accent-cyan);
+    color: var(--color-bg-base);
+    border: 1px solid var(--color-accent-cyan);
+
+    &:hover {
+      background: color-mix(in oklch, var(--color-accent-cyan) 90%, white);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px color-mix(in oklch, var(--color-accent-cyan) 35%, black);
+    }
+  }
+
+  &:last-child {
+    background: transparent;
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+
+    &:hover {
+      border-color: var(--color-accent-cyan);
+      color: var(--color-accent-cyan);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.projectFooter {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.backLink {
+  font-size: 0.9375rem;
+  color: var(--color-accent-cyan);
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: var(--color-accent-purple);
+    gap: 0.75rem;
+  }
+}

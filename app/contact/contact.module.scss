@@ -1,0 +1,138 @@
+.page {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: var(--space-xl);
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--color-text-primary);
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 48rem;
+  margin: 0 0 3rem 0;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.contactsCard {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+}
+
+.contactsTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0 0 1.5rem 0;
+}
+
+.contactsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-base);
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: var(--color-accent-cyan);
+    background: var(--color-bg-surface);
+  }
+
+  .contactLabel {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    font-weight: 600;
+    min-width: 5rem;
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+  }
+
+  .contactValue {
+    font-size: 0.9375rem;
+    color: var(--color-text-primary);
+    font-weight: 500;
+    word-break: break-all;
+  }
+
+  .contactLink {
+    color: var(--color-accent-cyan);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid color-mix(in oklch, var(--color-accent-cyan) 30%, transparent);
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: var(--color-accent-purple);
+      border-bottom-color: var(--color-accent-purple);
+    }
+  }
+}
+
+.formCard {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+}
+
+.formTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0 0 1.5rem 0;
+}
+
+.formNote {
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0 0 2rem 0;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  color: var(--color-accent-cyan);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  margin-top: 2rem;
+
+  &:hover {
+    color: var(--color-accent-purple);
+    gap: 0.75rem;
+  }
+}
