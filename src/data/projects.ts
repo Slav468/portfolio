@@ -69,7 +69,7 @@ export const projects: Project[] = [
     shortDescription: 'Блог с MDX-редактором и SEO.',
     stack: ['Next.js', 'React', 'TypeScript', 'SCSS', 'MDX'],
     image: '/images/projects/blog.jpg',
-    githubUrl: 'https://github.com/yourname/blog-platform',
+    githubUrl: 'https://github.com/Slav468/arik',
     demoUrl: 'https://blog-platform.vercel.app',
     featured: true,
     createdAt: '2025-08-05',
