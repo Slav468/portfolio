@@ -1,0 +1,13 @@
+@use '../../../styles/tokens' as *;
+
+.main {
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+}
+
+@media (min-width: 768px) {
+  .main {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}

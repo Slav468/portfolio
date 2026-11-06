@@ -1,10 +1,10 @@
-import { Container } from '@/components/ui/container';
+import { MainContent } from '@/components/layout/MainContent';
 import { AboutSection } from '@/components/sections/about-section';
 
 export default function AboutPage() {
   return (
-    <Container className="py-16">
+    <MainContent>
       <AboutSection />
-    </Container>
+    </MainContent>
   );
 }

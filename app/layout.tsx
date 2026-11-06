@@ -2,6 +2,7 @@ import '../styles/globals.scss';
 import { Inter } from 'next/font/google';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
+import { MainContent } from '@/components/layout/MainContent';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,7 +20,7 @@ export default function RootLayout({
     <html lang="ru" data-theme="dark" className={inter?.className || ''}>
       <body className={inter?.className || ''}>
         <Header />
-        <main className="py-12">{children}</main>
+        <MainContent>{children}</MainContent>
         <Footer authorName="Имя Фамилии" />
       </body>
     </html>
