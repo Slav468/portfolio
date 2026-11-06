@@ -31,6 +31,23 @@
   text-decoration: none;
 }
 
+.nav {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.navLink {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: var(--color-accent-cyan);
+  }
+}
+
 .logoIcon {
   width: 2rem;
   height: 2rem;

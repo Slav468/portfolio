@@ -14,18 +14,37 @@ const LOGO_SVG = (
   </svg>
 );
 
+const NAV_LINKS = [
+  { label: 'Обо мне', href: '#about' },
+  { label: 'Проекты', href: '#projects' },
+  { label: 'Контакты', href: '#contact' },
+] as const;
+
 export function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.wrapper}>
         <div className={styles.logo}>
-          <Link href="/" className={`${styles.logoLink}`}>
+          <Link href="/" className={styles.logoLink}>
             <div className={styles.logoIcon}>{LOGO_SVG}</div>
             <span className={styles.logoText}>
               <span className={styles.accent}>Портфолио</span>
             </span>
           </Link>
         </div>
+
+        <nav className={styles.nav}>
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className={styles.navLink}
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
         <ThemeToggle />
       </div>
     </header>

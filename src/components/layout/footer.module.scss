@@ -34,19 +34,3 @@
   font-size: 0.875rem;
   color: var(--color-text-muted);
 }
-
-.nav {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.navLink {
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
-  text-decoration: none;
-  transition: color 0.15s ease;
-
-  &:hover {
-    color: var(--color-accent-cyan);
-  }
-}
