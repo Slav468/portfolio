@@ -2,6 +2,9 @@
 
 .main {
   padding: var(--space-xl) var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
 }
 
 @media (min-width: 768px) {
