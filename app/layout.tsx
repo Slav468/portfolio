@@ -1,4 +1,4 @@
-import '../styles/globals.scss';
+import '@styles/globals.scss';
 import { Inter } from 'next/font/google';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className={inter?.className || ''}>
         <Header />
         <MainContent>{children}</MainContent>
-        <Footer authorName="Имя Фамилии" />
+        <Footer authorName="Сергей Скоромник" />
       </body>
     </html>
   );
