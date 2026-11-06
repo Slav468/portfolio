@@ -1,8 +1,10 @@
 @use '../../../styles/tokens' as *;
 
 .main {
-  padding-top: var(--space-xl);
-  padding-bottom: var(--space-xl);
+  max-width: 64rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: var(--space-xl) var(--space-xl);
 }
 
 @media (min-width: 768px) {
