@@ -159,4 +159,32 @@ export const projects: Project[] = [
     featured: false,
     createdAt: '2025-01-20',
   },
+  {
+    id: '11',
+    title: 'Менеджер задач',
+    slug: 'task-manager',
+    category: 'web',
+    description:
+      'Приложение для управления задачами с доской в стиле Kanban, дедлайнами, приоритетами и локальным хранением.',
+    shortDescription: 'Менеджер задач с доской Kanban.',
+    stack: ['React', 'TypeScript', 'SCSS', 'localStorage'],
+    image: '/images/projects/task-manager.jpg',
+    githubUrl: 'https://github.com/yourname/task-manager',
+    featured: false,
+    createdAt: '2024-12-10',
+  },
+  {
+    id: '12',
+    title: 'Личное портфолио',
+    slug: 'portfolio-website',
+    category: 'web',
+    description:
+      'Сайт-портфолио фронтенд-разработчика с каталогом проектов, разделом «Обо мне» и контактной формой.',
+    shortDescription: 'Личное портфолио на Next.js.',
+    stack: ['Next.js 16', 'React 19', 'TypeScript', 'SCSS', 'Vitest'],
+    image: '/images/projects/portfolio.jpg',
+    githubUrl: 'https://github.com/yourname/portfolio-website',
+    featured: false,
+    createdAt: '2024-11-01',
+  },
 ];
