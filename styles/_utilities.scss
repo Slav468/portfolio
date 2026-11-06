@@ -1,279 +1,212 @@
-// Минимальные утилиты
+// ═══════════════════════════════════════════════════════════════════════════
+// SPACING SYSTEM — единая сетка отступов (безопасный режим)
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// Принцип: масштаб в rem, единые гейты, без конфликтов.
+// Использование:
+//   • m-*  — внешний отступ (между блоками)
+//   • p-*  — внутренний отступ (внутри блока)
+//   • *-t/-r/-b/-l — последовательные оси
+//   • *-x/*-y — попарные оси
+//   • -m-* — отрицательные отступы (popover, overlay, drag)
+//
+// Шкала (rem): 0,0.25,0.5,0.75,1,1.25,1.5,2,2.5,3,4,5,6,8
+// ═══════════════════════════════════════════════════════════════════════════
 
-.flex {
-  display: flex;
+// ═══════════════════════════════════════════════════════════════════════════
+// 1. ТАЙПСКЕЙЛ / БАЗОВЫЕ ПАРАМЕТРЫ
+// ═══════════════════════════════════════════════════════════════════════════
+
+$base-padding: var(--space-md);   // 1rem — крупный внутренний отступ
+$base-gap: var(--space-md);       // 1rem — базовый gap между элементами
+$base-border: 1px solid var(--color-border);
+$border-radius: var(--radius-lg);
+$safe-touch: 44px;               // минимальный размер таргета (WCAG AAA)
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 2. ПРОСТРАНСТВЕННЫЙ МАСШТАБ (spacing-scale)
+// ═══════════════════════════════════════════════════════════════════════════
+
+$spacing-scale: (
+  0: 0,
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 0.75rem,
+  4: 1rem,
+  5: 1.25rem,
+  6: 1.5rem,
+  8: 2rem,
+  10: 2.5rem,
+  12: 3rem,
+  16: 4rem,
+  20: 5rem,
+  24: 6rem,
+  32: 8rem,
+);
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 3. MARGIN / PADDING UTILITIES (генерация)
+// ═══════════════════════════════════════════════════════════════════════════
+
+@each $name, $value in $spacing-scale {
+  .m-#{$name} { margin: $value; }
+  .mx-#{$name} { margin-left: $value; margin-right: $value; }
+  .my-#{$name} { margin-top: $value; margin-bottom: $value; }
+  .mt-#{$name} { margin-top: $value; }
+  .mr-#{$name} { margin-right: $value; }
+  .mb-#{$name} { margin-bottom: $value; }
+  .ml-#{$name} { margin-left: $value; }
+
+  .p-#{$name} { padding: $value; }
+  .px-#{$name} { padding-left: $value; padding-right: $value; }
+  .py-#{$name} { padding-top: $value; padding-bottom: $value; }
+  .pt-#{$name} { padding-top: $value; }
+  .pr-#{$name} { padding-right: $value; }
+  .pb-#{$name} { padding-bottom: $value; }
+  .pl-#{$name} { padding-left: $value; }
+
+  .m-#{$name}-n { margin: -$value; }
+  .mx-#{$name}-n { margin-left: -$value; margin-right: -$value; }
+  .my-#{$name}-n { margin-top: -$value; margin-bottom: -$value; }
+  .mt-#{$name}-n { margin-top: -$value; }
+  .mr-#{$name}-n { margin-right: -$value; }
+  .mb-#{$name}-n { margin-bottom: -$value; }
+  .ml-#{$name}-n { margin-left: -$value; }
 }
 
-.grid {
-  display: grid;
-}
+// ═══════════════════════════════════════════════════════════════════════════
+// 4. BOUNDARY & Z-INDEX
+// ═══════════════════════════════════════════════════════════════════════════
 
-.hidden {
-  display: none;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.mt-md {
-  margin-top: var(--space-md);
-}
-
-// Layout
-.mx-auto {
+.safe-inner {
+  padding: var(--space-xl);
+  max-width: 64rem;
   margin-left: auto;
   margin-right: auto;
 }
 
-.mt-auto {
-  margin-top: auto;
-}
-
-// Spacing (используются переменные из токенов)
-.p-6 {
-  padding: var(--space-xl);
-}
-
-.px-6 {
-  padding-left: var(--space-xl);
-  padding-right: var(--space-xl);
-}
-
-.py-12 {
-  padding-top: calc(var(--space-xl) * 1.5);
-  padding-bottom: calc(var(--space-xl) * 1.5);
-}
-
-.px-2\.5 {
-  padding-left: 0.625rem;
-  padding-right: 0.625rem;
-}
-
-.py-0\.5 {
-  padding-top: 0.125rem;
-  padding-bottom: 0.125rem;
-}
-
-.mb-1 {
-  margin-bottom: 0.25rem;
-}
-.mb-2 {
-  margin-bottom: 0.5rem;
-}
-.mb-3 {
-  margin-bottom: 0.75rem;
-}
-.mb-4 {
-  margin-bottom: 1rem;
-}
-.mb-6 {
-  margin-bottom: 1.5rem;
-}
-.mb-8 {
-  margin-bottom: 2rem;
-}
-.mb-12 {
-  margin-bottom: 3rem;
-}
-
-.mt-1 {
-  margin-top: 0.25rem;
-}
-.mt-2 {
-  margin-top: 0.5rem;
-}
-
-.ml-1 {
-  margin-left: 0.25rem;
-}
-
-// Sizes
-.max-w-2xl {
+.safe-inner-sm {
+  padding: var(--space-md);
   max-width: 42rem;
-}
-.max-w-5xl {
-  max-width: 64rem;
-}
-
-// Typography
-.text-xs {
-  font-size: 0.75rem;
-}
-.text-sm {
-  font-size: 0.875rem;
-}
-.text-base {
-  font-size: 1rem;
-}
-.text-lg {
-  font-size: 1.125rem;
-}
-.text-xl {
-  font-size: 1.25rem;
-}
-.text-3xl {
-  font-size: 1.875rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.font-medium {
-  font-weight: 500;
-}
-.font-bold {
-  font-weight: 700;
-}
+.z-top { z-index: 100; }
+.z-top-2 { z-index: 200; }
+.z-top-3 { z-index: 300; }
 
-.leading-none {
-  line-height: 1;
-}
+// ═══════════════════════════════════════════════════════════════════════════
+// 5. COMPONENT SPACING PRESETS
+// ═══════════════════════════════════════════════════════════════════════════
 
-.tracking-tight {
-  letter-spacing: -0.025em;
-}
-.tracking-wider {
-  letter-spacing: 0.05em;
-}
-
-// Borders & radius
-.border {
+.card {
+  padding: var(--space-lg);
   border: 1px solid var(--color-border);
-}
-.border-b {
-  border-bottom: 1px solid var(--color-border);
-}
-.border-t {
-  border-top: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg-surface);
 }
 
-.rounded-md {
-  border-radius: 0.375rem;
-}
-.rounded-lg {
-  border-radius: 0.5rem;
-}
-.rounded-full {
-  border-radius: 9999px;
-}
+.card--tight { padding: var(--space-md); }
+.card--loose { padding: var(--space-xl); }
 
-// Backgrounds
-.bg-transparent {
-  background-color: transparent;
-}
+.card-body { padding: var(--space-md); }
 
-// Text colors
-.text-primary {
-  color: var(--color-text-primary);
-}
-.text-secondary {
-  color: var(--color-text-secondary);
-}
-.text-muted {
-  color: var(--color-text-muted);
-}
-.text-accent-cyan {
-  color: var(--color-accent-cyan);
-}
-
-// Hover states (применяются через селекторы в компонентах, но оставим базовые)
-.hover\:underline:hover {
-  text-decoration: underline;
-}
-
-.hover\:opacity-90:hover {
-  opacity: 0.9;
-}
-
-// Flexbox
-.flex-col {
-  flex-direction: column;
-}
-.flex-row {
-  flex-direction: row;
-}
-.items-center {
+.btn {
+  padding: var(--space-sm) var(--space-xl);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
   align-items: center;
-}
-.justify-center {
   justify-content: center;
-}
-.justify-between {
-  justify-content: space-between;
-}
-.gap-2 {
-  gap: 0.5rem;
-}
-.gap-3 {
-  gap: 0.75rem;
-}
-.gap-4 {
-  gap: 1rem;
-}
-.gap-6 {
-  gap: 1.5rem;
+  gap: var(--space-sm);
+  text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  outline: none;
 }
 
-// Space
-.space-y-1 > * + * {
-  margin-top: 0.25rem;
-}
-.space-y-1\.5 > * + * {
-  margin-top: 0.375rem;
-}
-
-// Lists
-.list-disc {
-  list-style-type: disc;
-}
-.list-inside {
-  list-style-position: inside;
-}
-
-// Misc
-.shrink-0 {
-  flex-shrink: 0;
-}
-
-.pb-2 {
-  padding-bottom: 0.5rem;
-}
-.pt-2 {
-  padding-top: 0.5rem;
-}
-.pt-4 {
-  padding-top: 1rem;
-}
-
-// Focus
-.focus\:outline-none:focus {
-  outline: 2px solid transparent;
+.btn:focus-visible {
+  outline: 2px solid var(--color-accent-cyan);
   outline-offset: 2px;
 }
 
-.focus\:ring-2:focus-visible {
-  box-shadow: 0 0 0 2px var(--color-accent-cyan);
+.btn--primary { background-color: var(--color-accent-cyan); color: var(--color-bg-base); }
+.btn--primary:hover { background-color: var(--color-accent-cyan); opacity: 0.9; }
+
+.btn--secondary {
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+}
+.btn--secondary:hover { border-color: var(--color-accent-cyan); color: var(--color-accent-cyan); }
+
+.btn--ghost {
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: var(--color-text-primary);
+}
+.btn--ghost:hover { background-color: var(--color-bg-surface); border-color: var(--color-border); }
+
+.link {
+  color: var(--color-accent-cyan);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s ease;
+}
+.link:hover { color: color-mix(in oklch, var(--color-accent-cyan) 85%, black); }
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 6. SECTION GAPS
+// ═══════════════════════════════════════════════════════════════════════════
+
+.section-gap { padding-top: var(--space-xl); padding-bottom: var(--space-xl); }
+.section-hero { padding-top: var(--space-32); padding-bottom: var(--space-24); }
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 7. FLEX / GRID HELPERS
+// ═══════════════════════════════════════════════════════════════════════════
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
-// Transitions
-.transition-colors {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
+.grid-safe { display: grid; gap: var(--space-md); }
+
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 8. ANIMATIONS (safe)
+// ═══════════════════════════════════════════════════════════════════════════
+
+.fade-in {
+  animation: fadeIn 0.2s ease-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-// Position
-.sticky {
-  position: sticky;
-}
-.top-0 {
-  top: 0;
-}
-.z-50 {
-  z-index: 50;
+// ═══════════════════════════════════════════════════════════════════════════
+// 9. ACCESSIBILITY (safe touch targets)
+// ═══════════════════════════════════════════════════════════════════════════
+
+.min-touch-target {
+  min-width: $safe-touch;
+  min-height: $safe-touch;
 }
 
-// Group
-.group {
-  position: relative;
-}
+// ═══════════════════════════════════════════════════════════════════════════
+// 10. DARK MODE SAFETY
+// ═══════════════════════════════════════════════════════════════════════════
+
+.bg-glass { background-color: rgba(27, 27, 31, 0.9); }
+.bg-glass-blur { background-color: rgba(27, 27, 31, 0.75); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.bg-glass-glass { background-color: rgba(27, 27, 31, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
