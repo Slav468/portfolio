@@ -15,9 +15,9 @@ const LOGO_SVG = (
 );
 
 const NAV_LINKS = [
-  { label: 'Обо мне', href: '#about' },
-  { label: 'Проекты', href: '#projects' },
-  { label: 'Контакты', href: '#contact' },
+  { label: 'Обо мне', href: '/about' },
+  { label: 'Проекты', href: '/projects' },
+  { label: 'Контакты', href: '/contact' },
 ] as const;
 
 export function Header() {
@@ -35,13 +35,13 @@ export function Header() {
 
         <nav className={styles.nav}>
           {NAV_LINKS.map((link) => (
-            <a
+            <Link
               key={link.label}
               href={link.href}
               className={styles.navLink}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
