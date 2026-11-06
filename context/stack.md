@@ -21,23 +21,23 @@
 
 ## Алиасы импортов (TypeScript paths)
 
-| Алиас | Путь |
-|-------|------|
-| `@/*` | `./src/*` и `./*` |
+| Алиас           | Путь                 |
+| --------------- | -------------------- |
+| `@/*`           | `./src/*` и `./*`    |
 | `@components/*` | `./src/components/*` |
-| `@features/*` | `./src/features/*` |
-| `@lib/*` | `./src/lib/*` |
-| `@data/*` | `./src/data/*` |
-| `@styles/*` | `./styles/*` |
+| `@features/*`   | `./src/features/*`   |
+| `@lib/*`        | `./src/lib/*`        |
+| `@data/*`       | `./src/data/*`       |
+| `@styles/*`     | `./styles/*`         |
 
 ### Где прописываются алиасы
 
-| Файл | Назначение | Что прописывать |
-|------|-----------|-----------------|
-| `tsconfig.json` | TypeScript понимает пути при компиляции | `compilerOptions.paths` — все 6 алиасов выше |
-| `next.config.ts` | Next.js / Turbopack при сборке и SSR | Алиасы берутся из `tsconfig.json` автоматически; блок `turbopack` оставил для расширения |
-| `eslint.config.js` | ESLint не ругается на неразрешённые импорты | `settings['import/resolver']` с путями `['./src', './styles']` |
-| `vitest.config.ts` (планируется) | Тесты Vitest при импорте компонентов | `resolve.alias` с теми же путями |
-| `jsconfig.json` (по необходимости) | Чистые JS-файлы без TS | Аналогичные `compilerOptions.paths` |
+| Файл                               | Назначение                                  | Что прописывать                                                                          |
+| ---------------------------------- | ------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `tsconfig.json`                    | TypeScript понимает пути при компиляции     | `compilerOptions.paths` — все 6 алиасов выше                                             |
+| `next.config.ts`                   | Next.js / Turbopack при сборке и SSR        | Алиасы берутся из `tsconfig.json` автоматически; блок `turbopack` оставил для расширения |
+| `eslint.config.js`                 | ESLint не ругается на неразрешённые импорты | `settings['import/resolver']` с путями `['./src', './styles']`                           |
+| `vitest.config.ts` (планируется)   | Тесты Vitest при импорте компонентов        | `resolve.alias` с теми же путями                                                         |
+| `jsconfig.json` (по необходимости) | Чистые JS-файлы без TS                      | Аналогичные `compilerOptions.paths`                                                      |
 
 Настроено в `tsconfig.json` (`compilerOptions.paths`), `next.config.ts`, `eslint.config.js`.

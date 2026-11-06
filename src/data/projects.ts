@@ -56,7 +56,7 @@ export const projects: Project[] = [
     image: '/images/projects/weather.jpg',
     githubUrl: 'https://github.com/yourname/weather-app',
     demoUrl: 'https://weather-app.vercel.app',
-    featured: false,
+    featured: true,
     createdAt: '2025-09-15',
   },
   {
@@ -158,34 +158,5 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/yourname/food-delivery',
     featured: false,
     createdAt: '2025-01-20',
-  },
-  {
-    id: '11',
-    title: 'Поиск фильмов и сериалов',
-    slug: 'movie-discovery',
-    category: 'web',
-    description:
-      'Каталог фильмов с поиском, фильтрацией по жанрам, рейтингом, трейлерами и описанием.',
-    shortDescription: 'Каталог фильмов с поиском и трейлерами.',
-    stack: ['Next.js', 'React', 'TypeScript', 'SCSS', 'TMDB API'],
-    image: '/images/projects/movies.jpg',
-    githubUrl: 'https://github.com/yourname/movie-discovery',
-    demoUrl: 'https://movie-discovery.vercel.app',
-    featured: false,
-    createdAt: '2025-05-22',
-  },
-  {
-    id: '12',
-    title: 'REST API для интернет-магазина',
-    slug: 'ecommerce-api',
-    category: 'api',
-    description:
-      'Бэкенд API с аутентификацией, заказами, товарами, отзываами и панелью администратора.',
-    shortDescription: 'REST API с аутентификацией и заказами.',
-    stack: ['Node.js', 'Express', 'TypeScript', 'PostgreSQL', 'JWT'],
-    image: '/images/projects/api.jpg',
-    githubUrl: 'https://github.com/yourname/ecommerce-api',
-    featured: false,
-    createdAt: '2025-02-14',
   },
 ];
