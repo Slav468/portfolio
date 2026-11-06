@@ -1,0 +1,41 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Портфолио на Next.js, React 19, TypeScript, SCSS",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint app/ eslint.config.js",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "report-gap": "node .cline/runtime/scripts/report-gap.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "next": "^16.4.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^8.0.9",
+    "@babel/eslint-parser": "^8.0.7",
+    "@babel/preset-react": "^8.0.1",
+    "@babel/preset-typescript": "^8.0.7",
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "eslint": "^10.13.0",
+    "eslint-config-next": "^16.4.3",
+    "eslint-plugin-react": "^7.37.5",
+    "prettier": "^3.9.10",
+    "sass": "^1.106.1",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  }
+}

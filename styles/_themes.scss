@@ -1,0 +1,7 @@
+// Переключатель тем через data-theme на <html>
+// Логика переключения реализуется в ThemeToggle (Client Component)
+// и сохраняется в localStorage
+
+html {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}

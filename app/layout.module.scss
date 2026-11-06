@@ -1,0 +1,24 @@
+:global {
+  /* Стили layout */
+  /* Классы модуля хешируются автоматически Next.js */
+  /* Использование: className={styles.header} */
+
+  /* Глобальные стили для header */
+  .header {
+    background-color: var(--color-bg-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-lg) 0;
+  }
+
+  /* Стили для main */
+  .main {
+    padding: var(--space-lg) 0;
+  }
+
+  /* Стили для footer */
+  .footer {
+    background-color: var(--color-bg-surface);
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-lg) 0;
+  }
+}
