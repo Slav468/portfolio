@@ -70,7 +70,7 @@ export const projects: Project[] = [
     stack: ['Next.js', 'React', 'TypeScript', 'SCSS', 'MDX'],
     image: '/images/projects/blog.jpg',
     githubUrl: 'https://github.com/Slav468/arik',
-    demoUrl: 'https://blog-platform.vercel.app',
+    demoUrl: 'https://slav468.github.io/arik/',
     featured: true,
     createdAt: '2025-08-05',
   },
