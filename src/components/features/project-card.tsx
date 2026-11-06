@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 
 export interface ProjectCardProps {
   project: Project;
+  featured?: boolean;
 }
 
 const GITHUB_SVG = (
@@ -33,9 +34,9 @@ const EXTERNAL_SVG = (
   </svg>
 );
 
-export function ProjectCard({ project }: ProjectCardProps) {
+export function ProjectCard({ project, featured = false }: ProjectCardProps) {
   return (
-    <article className={styles.card}>
+    <article className={`${styles.card} ${featured ? styles.featured : ''}`}>
       <div className={styles.header}>
         <h2 className={styles.title}>{project.title}</h2>
         <p className={styles.description}>{project.shortDescription}</p>

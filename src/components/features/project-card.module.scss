@@ -1,14 +1,24 @@
+@use '../../../styles/tokens' as *;
 
 .card {
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-xl);
-  transition: border-color 0.15s ease;
   position: relative;
   isolation: isolate;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
+    transform: translateY(-6px);
     border-color: var(--color-accent-cyan);
+    box-shadow: var(--glass-shadow);
+  }
+
+  &.featured {
+    grid-column: span 2;
+    grid-row: span 2;
   }
 }
 
@@ -37,7 +47,7 @@
   flex-direction: column;
   gap: 0.75rem;
   padding-top: 1rem;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--glass-border);
 }
 
 @media (min-width: 640px) {
@@ -58,7 +68,7 @@
   transition: color 0.15s ease;
 
   &:hover {
-    color: color-mix(in oklch, var(--color-accent-cyan) 80%, black);
+    opacity: 0.8;
   }
 
   .icon {

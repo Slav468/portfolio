@@ -38,4 +38,14 @@
   --shadow-sm: 0 0.125rem 0.25rem var(--color-shadow);
   --shadow-md: 0 0.25rem 0.5rem var(--color-shadow);
   --shadow-lg: 0 0.5rem 1rem var(--color-shadow);
+
+  /* Градиентные блобы (декоративный фон) */
+  --color-blob-cyan: oklch(0.75 0.22 195 / 0.15);
+  --color-blob-purple: oklch(0.70 0.25 280 / 0.12);
+  --color-blob-surface: oklch(0.27 0 0 / 0.6);
+
+  /* Стекло */
+  --glass-bg: oklch(0.27 0 0 / 0.55);
+  --glass-border: oklch(0.35 0 0 / 0.4);
+  --glass-shadow: 0 20px 40px -10px var(--color-shadow);
 }
