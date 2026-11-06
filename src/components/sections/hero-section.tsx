@@ -1,8 +1,10 @@
+import styles from './hero-section.module.scss';
+
 export function HeroSection() {
   return (
-    <div className="mb-12">
-      <h1 className="text-3xl font-bold mb-4 text-[var(--color-text-primary)]">Портфолио</h1>
-      <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl">
+    <div className={styles.section}>
+      <h1 className={styles.title}>Портфолио</h1>
+      <p className={styles.description}>
         Фронтенд-разработчик. Стек: Next.js, React, TypeScript, SCSS.
       </p>
     </div>

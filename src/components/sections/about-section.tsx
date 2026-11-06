@@ -1,3 +1,4 @@
+import styles from './about-section.module.scss';
 import { ExternalLink } from '@/components/ui/link';
 
 const STACK_ITEMS = [
@@ -10,36 +11,34 @@ const STACK_ITEMS = [
 
 export function AboutSection() {
   return (
-    <div className="max-w-2xl">
-      <h2 className="text-3xl font-bold mb-6 text-[var(--color-text-primary)]">Обо мне</h2>
+    <div className={styles.section}>
+      <h2 className={styles.title}>Обо мне</h2>
 
-      <p className="text-lg text-[var(--color-text-secondary)] mb-6">
+      <p className={styles.text}>
         Фронтенд-разработчик. Специализируюсь на Next.js, React, TypeScript и SCSS.
         Собираю быстрые, доступные и отзывчивые интерфейсы.
       </p>
 
-      <div className="mb-6">
-        <h3 className="text-xl font-bold mb-3 text-[var(--color-text-primary)]">Стек</h3>
-        <ul className="list-disc list-inside space-y-1 text-[var(--color-text-secondary)]">
+      <div>
+        <h3 className={styles.stackTitle}>Стек</h3>
+        <ul className={styles.stackList}>
           {STACK_ITEMS.map((item) => (
             <li key={item}>{item}</li>
           ))}
         </ul>
       </div>
 
-      <div className="mb-6">
-        <h3 className="text-xl font-bold mb-3 text-[var(--color-text-primary)]">Проекты</h3>
-        <p className="text-[var(--color-text-secondary)]">
+      <div>
+        <h3 className={styles.projectsTitle}>Проекты</h3>
+        <p className={styles.projectsText}>
           Подборку реальных работ смотрите на главной странице. Исходный код и
           демо-ссылки прикреплены к каждому проекту.
         </p>
       </div>
 
       <div>
-        <p className="text-[var(--color-text-secondary)] mb-2">
-          PDF-резюме:
-        </p>
-        <ExternalLink href="/Sergey Scoromnik_MiniCV.pdf">
+        <p className={styles.pdfLabel}>PDF-резюме:</p>
+        <ExternalLink href="/Sergey Scoromnik_MiniCV.pdf" className={styles.pdfLink}>
           скачать MiniCV
         </ExternalLink>
       </div>

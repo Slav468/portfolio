@@ -1,0 +1,33 @@
+
+.card {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg-surface);
+  padding: var(--space-xl);
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  padding-bottom: 0.5rem;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--color-text-primary);
+}
+
+.cardContent {
+  padding-top: 0.5rem;
+  color: var(--color-text-secondary);
+}
+
+.cardFooter {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+}

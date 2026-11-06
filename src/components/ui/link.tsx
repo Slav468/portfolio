@@ -1,5 +1,6 @@
 'use client';
 
+import styles from './link.module.scss';
 import { AnchorHTMLAttributes } from 'react';
 import Link from 'next/link';
 
@@ -21,10 +22,7 @@ export function ExternalLink({
       href={href}
       target={external ? '_blank' : undefined}
       rel={external ? 'noopener noreferrer' : undefined}
-      className={[
-        'text-[var(--color-accent-cyan)] hover:underline transition-colors',
-        className,
-      ].filter(Boolean).join(' ')}
+      className={[styles.link, className].filter(Boolean).join(' ')}
       {...props}
     >
       {children}

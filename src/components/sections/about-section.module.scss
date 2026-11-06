@@ -1,0 +1,67 @@
+
+.section {
+  max-width: 42rem;
+}
+
+.title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.text {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.stackTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.stackList {
+  list-style-type: disc;
+  list-style-position: inside;
+  margin: 0;
+  padding: 0;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.5rem;
+
+  li + li {
+    margin-top: 0.25rem;
+  }
+}
+
+.projectsTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.projectsText {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.pdfLabel {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.pdfLink {
+  color: var(--color-accent-cyan);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: color-mix(in oklch, var(--color-accent-cyan) 80%, black);
+  }
+}
