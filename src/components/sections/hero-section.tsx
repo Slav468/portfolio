@@ -53,7 +53,7 @@ export function HeroSection() {
       </div>
       <HeroContent
         kicker="Фронтенд-разработчик"
-        title="Sergey Scoromnik"
+        title="Сергей Скоромник"
         accent="•"
         description="Специализируюсь на создании современных веб-интерфейсов с помощью React, TypeScript и CSS (SCSS). Разрабатываю доступные и высокопроизводительные решения для цифровых продуктов. Имею опыт работы с Next, Zustand, Tailwind CSS и современными стандартами веб-разработки. Создаю интерфейсы, которые сочетают эстетику, функциональность и отличный UX."
         ctaPrimary={{ label: 'Проекты', href: '/projects', rel: 'noopener noreferrer' }}
