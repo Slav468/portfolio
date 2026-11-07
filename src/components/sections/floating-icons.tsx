@@ -36,7 +36,6 @@ export function FloatingIcons({
   const defaultDelays = [0, 2, 4, 1, 3, 5, 6];
 
   const numIcons = svgComponents.length;
-  const pos = positions ?? defaultPositions.slice(0, numIcons);
   const durs = animationDurations ?? defaultDurations.slice(0, numIcons);
   const delays = animationDelays ?? defaultDelays.slice(0, numIcons);
 
