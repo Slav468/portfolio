@@ -12,6 +12,12 @@ const nextConfig: NextConfig = {
   turbopack: {
     // Алиасы подхватываются из tsconfig.json (compilerOptions.paths).
     // Явное дублирование не требуется, но блок оставил для расширения.
+    rules: {
+      '*.svg': {
+        loaders: ['@svgr/webpack'],
+        as: '*.js',
+      },
+    },
   },
 };
 

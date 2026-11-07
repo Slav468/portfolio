@@ -1,25 +1,12 @@
 // Дизайн-токены (OKLCH). Легко заменяются в одном месте.
+// :root — базовые (светлые) значения токенов. Тёмная тема переопределяет
+// цвета через [data-theme="dark"] в styles/_themes.scss (ADR-005, ThemeToggle).
+// Внимание: файл подключается и в CSS-модули (@use ... as *), поэтому здесь
+// только чистый :root без нечистых селекторов.
 
 :root {
-  /* Цвета тёмной темы (базовая) */
-  --color-bg-base: oklch(0.20 0 0);
-  --color-bg-surface: oklch(0.27 0 0);
-  --color-bg-elevated: oklch(0.33 0 0);
-
-  --color-text-primary: oklch(0.96 0 0);
-  --color-text-secondary: oklch(0.65 0 0);
-  --color-text-muted: oklch(0.45 0 0);
-
-  --color-accent-cyan: oklch(0.75 0.22 195);
-  --color-accent-purple: oklch(0.70 0.25 280);
-  --color-accent-success: oklch(0.65 0.20 140);
-  --color-accent-danger: oklch(0.65 0.25 25);
-
-  --color-border: oklch(0.35 0 0);
-  --color-shadow: oklch(0 0 0 / 0.4);
-
   /* Шрифты через CSS переменные */
-  --font-sans: 'Geist Sans', system-ui, sans-serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
   /* Отступы и размеры в rem (удобно масштабируется) */
@@ -28,24 +15,52 @@
   --space-md: 1rem;        /* 16px */
   --space-lg: 1.5rem;      /* 24px */
   --space-xl: 2rem;        /* 32px */
+  --space-2xl: 3rem;       /* 48px */
 
   /* Радиусы */
   --radius-sm: 0.4rem;     /* 8px */
   --radius-md: 0.8rem;     /* 16px */
   --radius-lg: 1.2rem;     /* 20px */
+  --radius-full: 9999px;
 
-  /* Тени */
-  --shadow-sm: 0 0.125rem 0.25rem var(--color-shadow);
-  --shadow-md: 0 0.25rem 0.5rem var(--color-shadow);
-  --shadow-lg: 0 0.5rem 1rem var(--color-shadow);
+  /* Микро-анимации */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Тени (базовые — светлая тема) */
+  --shadow-sm: 0 0.125rem 0.25rem oklch(0 0 0 / 0.1);
+  --shadow-md: 0 0.25rem 0.5rem oklch(0 0 0 / 0.15);
+  --shadow-lg: 0 0.5rem 1rem oklch(0 0 0 / 0.2);
+  --shadow-xl: 0 1rem 3rem oklch(0 0 0 / 0.25);
 
   /* Градиентные блобы (декоративный фон) */
-  --color-blob-cyan: oklch(0.75 0.22 195 / 0.15);
-  --color-blob-purple: oklch(0.70 0.25 280 / 0.12);
-  --color-blob-surface: oklch(0.27 0 0 / 0.6);
+  --color-blob-cyan: oklch(0.45 0.20 185 / 0.1);
+  --color-blob-purple: oklch(0.40 0.25 275 / 0.12);
+  --color-blob-orange: oklch(0.45 0.30 35 / 0.12);
+  --color-blob-surface: oklch(0.97 0 0 / 0.8);
+  --color-blob-emerald: oklch(0.45 0.25 145 / 0.12);
 
   /* Стекло */
-  --glass-bg: oklch(0.27 0 0 / 0.55);
-  --glass-border: oklch(0.35 0 0 / 0.4);
-  --glass-shadow: 0 20px 40px -10px var(--color-shadow);
+  --glass-bg: oklch(0.97 0 0 / 0.9);
+  --glass-border: oklch(0.65 0 0 / 0.8);
+  --glass-shadow: 0 25px 50px -10px oklch(0 0 0 / 0.3);
+
+  /* Цвета светлой темы (базовые) */
+  --color-bg-base: oklch(0.95 0 0);
+  --color-bg-surface: oklch(0.97 0 0);
+  --color-bg-elevated: oklch(0.94 0 0);
+
+  --color-text-primary: oklch(0.15 0 0);
+  --color-text-secondary: oklch(0.40 0 0);
+  --color-text-muted: oklch(0.55 0 0);
+
+  --color-accent-cyan: oklch(0.45 0.20 185);
+  --color-accent-purple: oklch(0.40 0.25 275);
+  --color-accent-orange: oklch(0.45 0.30 35);
+  --color-accent-emerald: oklch(0.45 0.25 145);
+
+  --color-border: oklch(0.65 0 0);
+  --color-shadow: oklch(0 0 0 / 0.15);
 }

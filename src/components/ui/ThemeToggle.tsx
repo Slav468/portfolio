@@ -2,24 +2,95 @@
 
 import { useState, useEffect } from 'react';
 
-export function ThemeToggle() {
-  const [theme, setTheme] = useState<string>('dark');
+type Theme = 'light' | 'dark';
 
-  // применяем тему к <html>
+function getInitialTheme(): Theme {
+  if (typeof window === 'undefined') return 'dark';
+  
+  try {
+    const stored = sessionStorage.getItem('theme');
+    if (stored === 'light' || stored === 'dark') return stored;
+  } catch {
+    // sessionStorage unavailable
+  }
+  
+  // Fallback to system preference
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+export function ThemeToggle() {
+  const [theme, setTheme] = useState<Theme>(() => getInitialTheme());
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Apply theme to <html> on mount and change
+  useEffect(() => {
+    if (!mounted) return;
+    
     const html = document.documentElement;
     html.setAttribute('data-theme', theme);
-    html.classList.remove('light', 'dark');
-    html.classList.add(theme);
-  }, [theme]);
+    
+    // Persist to sessionStorage
+    try {
+      sessionStorage.setItem('theme', theme);
+    } catch {
+      // Ignore if sessionStorage unavailable
+    }
+  }, [theme, mounted]);
+
+  // Listen for system preference changes (only when no explicit user choice)
+  useEffect(() => {
+    if (!mounted) return;
+    
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    const handleChange = (e: MediaQueryListEvent) => {
+      // Only auto-switch if user hasn't made explicit choice this session
+      try {
+        const hasExplicitChoice = sessionStorage.getItem('theme') !== null;
+        if (!hasExplicitChoice) {
+          setTheme(e.matches ? 'dark' : 'light');
+        }
+      } catch {
+        // Ignore
+      }
+    };
+    
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, [mounted]);
 
   const toggleTheme = () => {
-    if (theme === 'dark') {
-      setTheme('light');
-    } else {
-      setTheme('dark');
-    }
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
   };
+
+  if (!mounted) {
+    // Return empty during SSR/hydration to avoid mismatch
+    return (
+      <button
+        aria-label="Переключить тему"
+        style={{
+          position: 'absolute',
+          top: '1rem',
+          right: '1rem',
+          backgroundColor: 'var(--color-bg-surface)',
+          border: '1px solid var(--color-border)',
+          borderRadius: 'var(--radius-md)',
+          padding: 'var(--space-sm)',
+          cursor: 'pointer',
+          color: 'var(--color-text-primary)',
+          transition: 'all var(--transition-fast) ease',
+        }}
+      >
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3l5 9-5 9h-2V9h-3v6H5v-6H2v6H2V9H0v6h3v-6h2v-9h5z" />
+        </svg>
+      </button>
+    );
+  }
 
   return (
     <button
@@ -32,10 +103,11 @@ export function ThemeToggle() {
         right: '1rem',
         backgroundColor: 'var(--color-bg-surface)',
         border: '1px solid var(--color-border)',
-        borderRadius: '8px',
-        padding: '8px',
+        borderRadius: 'var(--radius-md)',
+        padding: 'var(--space-sm)',
         cursor: 'pointer',
         color: 'var(--color-text-primary)',
+        transition: 'all var(--transition-fast) ease',
       }}
     >
       {theme === 'dark' ? (

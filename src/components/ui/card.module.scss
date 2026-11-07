@@ -4,13 +4,22 @@
   border: 1px solid var(--color-border);
   background-color: var(--color-bg-surface);
   padding: var(--space-xl);
+  box-shadow: var(--shadow-md);
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: var(--color-accent-cyan);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
 }
 
 .cardHeader {
   display: flex;
   flex-direction: column;
-  gap: 0.375rem;
-  padding-bottom: 0.5rem;
+  gap: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .cardTitle {
@@ -22,12 +31,13 @@
 }
 
 .cardContent {
-  padding-top: 0.5rem;
+  padding-top: var(--space-sm);
   color: var(--color-text-secondary);
 }
 
 .cardFooter {
-  margin-top: 0.5rem;
+  margin-top: var(--space-sm);
   display: flex;
   align-items: center;
+  justify-content: flex-end;
 }

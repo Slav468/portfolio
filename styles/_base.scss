@@ -30,13 +30,8 @@ body {
 }
 
 a {
-  color: var(--color-accent-cyan);
   text-decoration: none;
   transition: color 0.2s ease;
-
-  &:hover {
-    color: var(--color-accent-purple);
-  }
 }
 
 h1,

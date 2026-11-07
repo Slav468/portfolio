@@ -2,16 +2,45 @@
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: 1.5rem;
+  /* Fill gaps from featured cards spanning 2 cols */
+  grid-auto-flow: dense;
+}
+
+.cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 @media (min-width: 640px) {
-  .grid {
+  .grid:not(.cols-1):not(.cols-2):not(.cols-3) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (min-width: 1024px) {
-  .grid {
+  .grid:not(.cols-1):not(.cols-2):not(.cols-3) {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Featured cards span 2 columns on desktop */
+@media (min-width: 1024px) {
+  .grid .featured {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+}
+
+/* Tablet: featured spans 2 cols in 2-col grid = full width */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .grid .featured {
+    grid-column: span 2;
   }
 }

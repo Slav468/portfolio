@@ -1,45 +1,73 @@
 import styles from './hero-section.module.scss';
+import { BackgroundBlobs } from './background-blobs';
+import { FloatingIcons } from './floating-icons';
+import { HeroContent } from './hero-content';
+
+// Иконки
+import css3 from '@/assets/icons/skills/css3.svg';
+import figma from '@/assets/icons/skills/figma.svg';
+import git from '@/assets/icons/skills/git.svg';
+import github from '@/assets/icons/skills/github.svg';
+import html5 from '@/assets/icons/skills/html5.svg';
+import javascript from '@/assets/icons/skills/javascript.svg';
+import jquery from '@/assets/icons/skills/jquery.svg';
+import nextjs from '@/assets/icons/skills/nextjs.svg';
+import react from '@/assets/icons/skills/react.svg';
+import sass from '@/assets/icons/skills/sass.svg';
+import typescript from '@/assets/icons/skills/typescript.svg';
+import vite from '@/assets/icons/skills/vite.svg';
 
 export function HeroSection() {
+  const svgComponents = [
+    nextjs(),
+    react(),
+    typescript(),
+    javascript(),
+    css3(),
+    sass(),
+    vite(),
+    figma(),
+    git(),
+    github(),
+    html5(),
+    jquery(),
+  ];
+
   return (
     <section className={styles.section}>
-      <div className={styles.blobs}>
-        <div className={styles.blob} style={{ background: 'var(--color-blob-cyan)' }} />
-        <div className={styles.blob} style={{ background: 'var(--color-blob-purple)' }} />
+      <BackgroundBlobs
+        blobCount={2}
+        blobSizes={[
+          [50, 50],
+          [40, 40],
+        ]}
+        blobPositions={[
+          [-15, -15],
+          [-10, -10],
+        ]}
+        animationDurations={[14, 18]}
+      />
+      <div className={styles.glass} />
+      <div className={styles.hero__inner}>
+        <FloatingIcons svgComponents={svgComponents} />
       </div>
-      <div className={styles.content}>
-        <div className={styles.kicker}>Frontend Developer · Минск, Беларусь</div>
-        <h1 className={styles.title}>
-          Сергей Скоромник<span className={styles.accent}>.</span>
-        </h1>
-        <p className={styles.description}>
-          Создаю быстрые, доступные и отзывчивые веб-интерфейсы на Next.js,
-          React, TypeScript и SCSS. 3+ года коммерческого опыта, 10+ коммерческих
-          проектов, фокус на чистый код и производительность.
-        </p>
-        <div className={styles.ctaGroup}>
-          <a href="/projects" className={styles.ctaPrimary}>
-            Мои проекты
-          </a>
-          <a href="/contact" className={styles.ctaSecondary}>
-            Связаться
-          </a>
-        </div>
-        <div className={styles.stats}>
-          <div className={styles.statItem}>
-            <span className={styles.statNumber}>3+</span>
-            <span className={styles.statLabel}>лет опыта</span>
-          </div>
-          <div className={styles.statItem}>
-            <span className={styles.statNumber}>10+</span>
-            <span className={styles.statLabel}>коммерческих проектов</span>
-          </div>
-          <div className={styles.statItem}>
-            <span className={styles.statNumber}>12</span>
-            <span className={styles.statLabel}>проектов в портфолио</span>
-          </div>
-        </div>
-      </div>
+      <HeroContent
+        kicker="Фронтенд-разработчик"
+        title="Sergey Scoromnik"
+        accent="•"
+        description="Специализируюсь на создании современных веб-интерфейсов с помощью React, TypeScript и CSS (SCSS). Разрабатываю доступные и высокопроизводительные решения для цифровых продуктов. Имею опыт работы с Next, Zustand, Tailwind CSS и современными стандартами веб-разработки. Создаю интерфейсы, которые сочетают эстетику, функциональность и отличный UX."
+        ctaPrimary={{ label: 'Проекты', href: '/projects', rel: 'noopener noreferrer' }}
+        ctaSecondary={{
+          label: 'ГитХаб',
+          href: 'https://github.com/Slav468',
+          target: '_blank',
+        }}
+        stats={[
+          { number: '8', label: 'Проекты' },
+          { number: '3+', label: 'Лета' },
+          { number: '100%', label: 'Удовлетворенность' },
+        ]}
+      />
     </section>
   );
 }

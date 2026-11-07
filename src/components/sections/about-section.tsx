@@ -1,5 +1,8 @@
+'use client';
+
 import styles from './about-section.module.scss';
 import { ExternalLink } from '@/components/ui/link';
+import { useInView } from '@/components/ui/useInView';
 
 const STACK_ITEMS = [
   'HTML5 / CSS3',
@@ -62,11 +65,20 @@ const CONTACTS: ContactItem[] = [
 ];
 
 export function AboutSection() {
+  const { ref: introRef, isInView: introVisible } = useInView({ once: true });
+  const { ref: expRef, isInView: expVisible } = useInView({ once: true });
+  const { ref: eduRef, isInView: eduVisible } = useInView({ once: true });
+  const { ref: contactsRef, isInView: contactsVisible } = useInView({ once: true });
+  const { ref: pdfRef, isInView: pdfVisible } = useInView({ once: true });
+
   return (
     <div className={styles.section}>
-      <h2 className={styles.title}>Обо мне</h2>
+      <h2 className={`${styles.title} reveal ${introVisible ? 'revealed' : ''}`}>Обо мне</h2>
 
-      <div className={styles.intro}>
+      <div
+        className={`${styles.intro} reveal ${introVisible ? 'revealed' : ''}`}
+        ref={introRef}
+      >
         <div className={styles.avatarPlaceholder} />
         <div className={styles.introText}>
           <h3 className={styles.introName}>Сергей Скоромник</h3>
@@ -84,10 +96,13 @@ export function AboutSection() {
         </div>
       </div>
 
-      <div className={styles.expSection}>
+      <div
+        className={`${styles.expSection} reveal ${expVisible ? 'revealed' : ''}`}
+        ref={expRef}
+      >
         <h3 className={styles.stackTitle}>Опыт работы</h3>
-        {EXPERIENCE_ITEMS.map((exp) => (
-          <div key={exp.role} className={styles.expItem}>
+        {EXPERIENCE_ITEMS.map((exp, i) => (
+          <div key={i} className={styles.expItem}>
             <div className={styles.expHeader}>
               <span className={styles.expRole}>{exp.role}</span>
               <span className={styles.expPeriod}>{exp.period}</span>
@@ -100,7 +115,10 @@ export function AboutSection() {
         ))}
       </div>
 
-      <div className={styles.eduSection}>
+      <div
+        className={`${styles.eduSection} reveal ${eduVisible ? 'revealed' : ''}`}
+        ref={eduRef}
+      >
         <h3 className={styles.stackTitle}>Образование и курсы</h3>
         {EDUCATION_ITEMS.map((edu) => (
           <p key={edu.course} className={styles.eduItem}>
@@ -109,7 +127,10 @@ export function AboutSection() {
         ))}
       </div>
 
-      <div className={styles.contactsSection}>
+      <div
+        className={`${styles.contactsSection} reveal ${contactsVisible ? 'revealed' : ''}`}
+        ref={contactsRef}
+      >
         <h3 className={styles.stackTitle}>Контакты</h3>
         <ul className={styles.contactsList}>
           {CONTACTS.map((c) => (
@@ -127,7 +148,10 @@ export function AboutSection() {
         </ul>
       </div>
 
-      <div className={styles.pdfWrapper}>
+      <div
+        className={`${styles.pdfWrapper} reveal ${pdfVisible ? 'revealed' : ''}`}
+        ref={pdfRef}
+      >
         <p className={styles.pdfLabel}>PDF-резюме:</p>
         <ExternalLink href="/Sergey Scoromnik_MiniCV.pdf" className={styles.pdfLink}>
           скачать MiniCV

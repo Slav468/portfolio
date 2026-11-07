@@ -2,13 +2,14 @@
 
 .container {
   width: 100%;
-  max-width: 75rem; /* 1200px в rem (при базовом размере шрифта 16px) */
   margin: 0 auto;
   padding: 0 var(--space-md);
 }
 
 .section {
   padding: var(--space-xl) 0;
+  /* Consistent gap between sections */
+  margin-bottom: var(--space-xl);
 }
 
 .flex {

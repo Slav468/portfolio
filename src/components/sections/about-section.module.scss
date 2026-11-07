@@ -13,6 +13,57 @@
   letter-spacing: -0.02em;
 }
 
+/* Entrance animations for section items */
+.section-animate .expItem {
+  animation: slideIn 0.6s ease-out forwards;
+}
+
+.section-animate .expItem:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.section-animate .expItem:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.section-animate .expItem:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.section-animate .eduItem {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.section-animate .eduItem:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.section-animate .eduItem:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.section-animate .contactItem {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.section-animate .contactItem:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.section-animate .contactItem:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.section-animate .contactItem:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.section-animate .pdfLink {
+  animation: fadeInUp 0.5s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+/* Exp item styles */
 .intro {
   display: grid;
   grid-template-columns: 1fr;
@@ -20,6 +71,7 @@
   margin-bottom: 4rem;
   padding-bottom: 3rem;
   border-bottom: 1px solid var(--color-border);
+  animation: fadeInUp 0.6s ease-out;
 
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
@@ -80,16 +132,7 @@
   margin-bottom: 3rem;
 }
 
-.stackTitle {
-  font-size: clamp(1.25rem, 2vw, 1.5rem);
-  font-weight: 700;
-  color: var(--color-text-primary);
-  margin-bottom: 1.25rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
+/* Exp item with enhanced hover */
 .expItem {
   display: flex;
   flex-direction: column;
@@ -99,12 +142,14 @@
   border-radius: var(--radius-lg);
   background: var(--color-bg-surface);
   margin-bottom: 1rem;
-  transition: all 0.2s ease;
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 
   &:hover {
     border-color: var(--color-accent-cyan);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: var(--shadow-xl);
   }
 
   &:last-child {
@@ -158,12 +203,14 @@
   margin: 0.75rem 0 0 0;
 }
 
-.eduItem,
-.contactItem {
+/* Education items */
+.eduItem {
   font-size: 0.9375rem;
   color: var(--color-text-secondary);
   margin: 0 0 0.75rem 0;
   line-height: 1.5;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 
   &:last-child {
     margin-bottom: 0;
@@ -175,6 +222,7 @@
   font-weight: 500;
 }
 
+/* Contacts */
 .contactsList {
   list-style: none;
   margin: 0;
@@ -192,11 +240,14 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background: var(--color-bg-base);
-  transition: all 0.2s ease;
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 
   &:hover {
     border-color: var(--color-accent-cyan);
     background: var(--color-bg-surface);
+    transform: translateY(-2px) scale(1.02);
   }
 
   .contactLabel {
@@ -214,6 +265,7 @@
   }
 }
 
+/* PDF link */
 .pdfWrapper {
   margin-top: 3rem;
   padding-top: 2rem;
@@ -243,13 +295,15 @@
   border: 1px solid var(--color-accent-cyan);
   border-radius: var(--radius-md);
   background: color-mix(in oklch, var(--color-accent-cyan) 10%, transparent);
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   max-width: fit-content;
+  opacity: 0;
+  transform: translateY(1rem);
 
   &:hover {
     background: var(--color-accent-cyan);
     color: var(--color-bg-base);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px color-mix(in oklch, var(--color-accent-cyan) 40%, black);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 24px color-mix(in oklch, var(--color-accent-cyan) 40%, black);
   }
 }
