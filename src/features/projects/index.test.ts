@@ -7,9 +7,20 @@ describe('projects', () => {
     expect(projects.length).toBeGreaterThan(0);
   });
 
-  it('each entry is a Project instance', () => {
+  it('each entry has all fields defined', () => {
     projects.forEach((p: Project) => {
-      expect(p).toBeDefined();
+      expect(p.id).toBeDefined();
+      expect(p.title).toBeDefined();
+      expect(p.slug).toBeDefined();
+      expect(p.category).toBeDefined();
+      expect(p.description).toBeDefined();
+      expect(p.shortDescription).toBeDefined();
+      expect(p.stack).toEqual([]); // placeholder
+      expect(p.image).toBeDefined();
+      expect(p.githubUrl).toBeDefined();
+      expect(p.demoUrl).toBeDefined();
+      expect(p.featured).toBeDefined();
+      expect(p.createdAt).toBeDefined();
     });
   });
 });
