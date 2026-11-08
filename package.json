@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint app/ eslint.config.js",
+    "lint": "eslint .",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "report-gap": "node .cline/runtime/scripts/report-gap.js"
@@ -17,27 +17,40 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "next": "^16.4.3",
+    "next": "^16.4.5",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
   },
   "devDependencies": {
-    "@babel/core": "^8.0.9",
+    "@babel/core": "^8.1.0",
     "@babel/eslint-parser": "^8.0.7",
     "@babel/preset-react": "^8.0.1",
     "@babel/preset-typescript": "^8.0.7",
     "@eslint/js": "^10.0.1",
     "@svgr/webpack": "^8.1.0",
-    "@types/node": "^26.6.5",
+    "@types/node": "^26.6.6",
     "@types/react": "^19.3.0",
-    "@vitejs/plugin-react": "^6.1.2",
-    "eslint": "^10.13.0",
-    "eslint-config-next": "^16.4.3",
+    "@typescript-eslint/utils": "^8.72.1",
+    "@vitejs/plugin-react": "^6.2.1",
+    "eslint": "^10.14.0",
+    "eslint-import-resolver-typescript": "^4.4.5",
+    "eslint-plugin-import-x": "^4.18.0",
     "eslint-plugin-react": "^7.37.5",
     "prettier": "^3.9.10",
-    "sass": "^1.106.1",
+    "sass": "^1.108.1",
     "typescript": "^7.0.2",
     "vite": "^8.3.6",
-    "vitest": "^5.0.5"
+    "vitest": "^5.1.0"
+  },
+  "overrides": {
+    "eslint-plugin-react": {
+      "eslint": "$eslint"
+    },
+    "@typescript-eslint/utils": {
+      "typescript": "$typescript"
+    }
+  },
+  "allowScripts": {
+    "unrs-resolver@1.12.2": true
   }
 }

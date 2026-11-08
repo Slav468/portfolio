@@ -1,11 +1,33 @@
 import js from '@eslint/js';
 import babelParser from '@babel/eslint-parser';
 import reactPlugin from 'eslint-plugin-react';
+import importX from 'eslint-plugin-import-x';
+import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 
-// Базовый flat config для ESLint 10.
-// Парсинг JSX/TSX через @babel/eslint-parser (typescript-eslint не поддерживает TS 7.0).
 export default [
+  // Глобальный ignore: должен быть ОТДЕЛЬНЫМ объектом только с ignores
+  {
+    ignores: [
+      'node_modules/',
+      '.next/',
+      'out/',
+      'build/',
+      'coverage/',
+      '.vercel/',
+      'package-lock.json',
+
+      // ваши добавления:
+      'public/', // папка в корне проекта
+      'src/legacy/', // вложенная папка, путь от корня проекта
+      '**/generated/', // папка с таким именем на любом уровне
+      '**/*.min.js', // файлы по маске
+      '.cline/',
+      '.faif/',
+    ],
+  },
+
   js.configs.recommended,
+
   {
     files: ['**/*.{ts,tsx,js,jsx,mjs,cjs}'],
     languageOptions: {
@@ -15,46 +37,30 @@ export default [
         sourceType: 'module',
         requireConfigFile: false,
         babelOptions: {
-          presets: [
-            ['@babel/preset-react', { runtime: 'automatic' }],
-            '@babel/preset-typescript',
-          ],
+          presets: [['@babel/preset-react', { runtime: 'automatic' }], '@babel/preset-typescript'],
         },
       },
     },
     plugins: {
       react: reactPlugin,
-    },
-    rules: {
-      // react/jsx-uses-vars: помечает переменные, используемые в JSX (например, <ThemeToggle />),
-      // как использованные, чтобы no-unused-vars не ругался на импорты компонентов.
-      'react/jsx-uses-vars': 'error',
+      'import-x': importX,
     },
     settings: {
-      // Подсказка для плагинов импортов (eslint-plugin-import и т.д.):
-      // разрешать алиасы из tsconfig.json paths
-      'import/resolver': {
-        typescript: {},
-        node: {
-          paths: ['./src', './styles'],
-        },
-        // Дополнительно разрешаем алиасы @/* из tsconfig.json
-        '@': {
-          baseUrl: '.',
-          paths: {
-            '@/*': ['./src/*'],
-          },
-        },
-      },
+      // Алиасы (@/*, @components/* и т.д.) резолвятся из tsconfig.json paths
+      'import-x/resolver-next': [createTypeScriptImportResolver({ project: './tsconfig.json' })],
     },
-    ignores: [
-      'node_modules/',
-      '.next/',
-      'out/',
-      'build/',
-      'coverage/',
-      '.vercel/',
-      'package-lock.json',
-    ],
+    rules: {
+      'react/jsx-uses-vars': 'error',
+      'import-x/no-unresolved': 'error',
+    },
+  },
+
+  // Для TS: типы проверяет tsc, а эти правила Babel-парсер не понимает
+  {
+    files: ['**/*.{ts,tsx}'],
+    rules: {
+      'no-undef': 'off',
+      'no-unused-vars': 'off', // иначе будут ложные срабатывания на типах и интерфейсах
+    },
   },
 ];

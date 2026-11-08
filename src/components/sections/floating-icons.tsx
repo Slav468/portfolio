@@ -15,12 +15,7 @@ export interface FloatingIconsProps {
   animationDelays?: number[];
 }
 
-export function FloatingIcons({
-  svgComponents,
-  positions,
-  animationDurations,
-  animationDelays,
-}: FloatingIconsProps) {
+export function FloatingIcons({ svgComponents, positions }: FloatingIconsProps) {
   const defaultPositions = [
     { top: '5%', left: '5%' }, // 1: top-left
     { top: '20%', left: '30%' }, // 2: top-center
@@ -54,7 +49,7 @@ export function FloatingIcons({
             position: 'absolute',
             width: 40,
             height: 40,
-            animation: `float ${durs[i]}s ease-in-out infinite alternate`,
+            animation: `float ${durs[i]}s ease infinite alternate`,
             animationDelay: `${delays[i]}s`,
             top: pos[i]?.top ?? 0,
             left: pos[i]?.left ?? 0,

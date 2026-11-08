@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import styles from './background-blobs.module.scss';
 
 export interface BackgroundBlobsProps {
@@ -44,7 +43,7 @@ export function BackgroundBlobs({
             height: sizes[i][1],
             top: positions[i][0],
             left: positions[i][1],
-            animationDuration: `${durs[i]}s`,
+            '--animation-duration': `${durs[i]}s`,
           }}
         />
       ))}

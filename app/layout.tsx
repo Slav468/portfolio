@@ -38,7 +38,7 @@ function ThemeInitializer() {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ru" data-theme="dark">
+    <html lang="ru" suppressHydrationWarning>
       <head>
         <ThemeInitializer />
       </head>

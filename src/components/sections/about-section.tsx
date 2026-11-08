@@ -4,27 +4,14 @@ import styles from './about-section.module.scss';
 import { ExternalLink } from '@/components/ui/link';
 import { useInView } from '@/components/ui/useInView';
 
-const STACK_ITEMS = [
-  'HTML5 / CSS3',
-  'SCSS / SASS (BEM)',
-  'JavaScript (ES6+)',
-  'TypeScript',
-  'React',
-  'Next.js',
-  'jQuery',
-  'Git / GitHub',
-  'Figma',
-  'Vite',
-  'GSAP, Swiper, Fancybox, lightGallery',
-] as const;
-
 const EXPERIENCE_ITEMS = [
   {
     role: 'Frontend Developer',
     company: 'Web Studio Yar',
     period: '2025 – 2026',
     location: 'Минск, Беларусь',
-    stack: 'JavaScript, HTML, CSS, jQuery, Git, Figma, Vite, GSAP, Swiper, Fancybox, lightGallery, noUiSlider',
+    stack:
+      'JavaScript, HTML, CSS, jQuery, Git, Figma, Vite, GSAP, Swiper, Fancybox, lightGallery, noUiSlider',
     description:
       'Создание адаптивных и кроссбраузерных вёрсток для 10+ коммерческих проектов на HTML, SCSS/SASS, BEM и JavaScript. Разработка модульных UI-компонентов и интерактивных интерфейсов. Внедрение анимаций (GSAP, CSS transitions, keyframes), интеграция Yandex SmartCaptcha, работа с DOM APIs, localStorage/sessionStorage, cookies, MutationObserver, IntersectionObserver.',
   },
@@ -59,7 +46,11 @@ const CONTACTS: ContactItem[] = [
   { label: 'Телефон', value: '+375 29 766 25 91', href: 'tel:+375297662591' },
   { label: 'Email', value: 'sergeyskoromnik@gmail.com', href: 'mailto:sergeyskoromnik@gmail.com' },
   { label: 'Telegram', value: '@dzedbaraded4021', href: 'https://t.me/dzedbaraded4021' },
-  { label: 'LinkedIn', value: 'sergey-scoromnik', href: 'https://linkedin.com/in/sergey-scoromnik' },
+  {
+    label: 'LinkedIn',
+    value: 'sergey-scoromnik',
+    href: 'https://linkedin.com/in/sergey-scoromnik',
+  },
   { label: 'GitHub', value: 'Slav468', href: 'https://github.com/Slav468' },
   { label: 'hh.ru', value: 'Резюме', href: 'https://hh.ru/resume/sergey-scoromnik' },
 ];
@@ -75,31 +66,23 @@ export function AboutSection() {
     <div className={styles.section}>
       <h2 className={`${styles.title} reveal ${introVisible ? 'revealed' : ''}`}>Обо мне</h2>
 
-      <div
-        className={`${styles.intro} reveal ${introVisible ? 'revealed' : ''}`}
-        ref={introRef}
-      >
+      <div className={`${styles.intro} reveal ${introVisible ? 'revealed' : ''}`} ref={introRef}>
         <div className={styles.avatarPlaceholder} />
         <div className={styles.introText}>
           <h3 className={styles.introName}>Сергей Скоромник</h3>
           <p className={styles.introRole}>Frontend Developer · Минск, Беларусь</p>
           <p className={styles.introBio}>
-            Frontend-разработчик с 3+ годами коммерческого опыта в создании
-            отзывчивых и кроссбраузерных веб-интерфейсов. Сильная основа в
-            HTML5, CSS3, SCSS/SASS, BEM и JavaScript (ES6+). Опыт разработки
-            переиспользуемых UI-компонентов, адаптивной и SEO-дружественной
-            вёрстки, работы с DOM API, браузерным хранилищем, сторонними
-            интеграциями, анимациями и отладкой фронтенда. В данный момент
-            расширяю экспертизу в React, TypeScript и Next.js через создание
-            современных веб-приложений и личных проектов.
+            Frontend-разработчик с 3+ годами коммерческого опыта в создании отзывчивых и
+            кроссбраузерных веб-интерфейсов. Сильная основа в HTML5, CSS3, SCSS/SASS, BEM и
+            JavaScript (ES6+). Опыт разработки переиспользуемых UI-компонентов, адаптивной и
+            SEO-дружественной вёрстки, работы с DOM API, браузерным хранилищем, сторонними
+            интеграциями, анимациями и отладкой фронтенда. В данный момент расширяю экспертизу в
+            React, TypeScript и Next.js через создание современных веб-приложений и личных проектов.
           </p>
         </div>
       </div>
 
-      <div
-        className={`${styles.expSection} reveal ${expVisible ? 'revealed' : ''}`}
-        ref={expRef}
-      >
+      <div className={`${styles.expSection} reveal ${expVisible ? 'revealed' : ''}`} ref={expRef}>
         <h3 className={styles.stackTitle}>Опыт работы</h3>
         {EXPERIENCE_ITEMS.map((exp, i) => (
           <div key={i} className={styles.expItem}>
@@ -115,10 +98,7 @@ export function AboutSection() {
         ))}
       </div>
 
-      <div
-        className={`${styles.eduSection} reveal ${eduVisible ? 'revealed' : ''}`}
-        ref={eduRef}
-      >
+      <div className={`${styles.eduSection} reveal ${eduVisible ? 'revealed' : ''}`} ref={eduRef}>
         <h3 className={styles.stackTitle}>Образование и курсы</h3>
         {EDUCATION_ITEMS.map((edu) => (
           <p key={edu.course} className={styles.eduItem}>
@@ -148,10 +128,7 @@ export function AboutSection() {
         </ul>
       </div>
 
-      <div
-        className={`${styles.pdfWrapper} reveal ${pdfVisible ? 'revealed' : ''}`}
-        ref={pdfRef}
-      >
+      <div className={`${styles.pdfWrapper} reveal ${pdfVisible ? 'revealed' : ''}`} ref={pdfRef}>
         <p className={styles.pdfLabel}>PDF-резюме:</p>
         <ExternalLink href="/Sergey Scoromnik_MiniCV.pdf" className={styles.pdfLink}>
           скачать MiniCV
