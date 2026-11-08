@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitest/config';
+import { defineConfig } 'vitest';
 
 import path from 'path';
 

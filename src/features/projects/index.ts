@@ -3,11 +3,11 @@ import { Project } from './types';
 export const projects: Project[] = [
   {
     id: '1',
-    title: 'Блог-платформа «Арик»',
+    title: 'Blog platform Arik',
     slug: 'arik',
     category: 'web',
-    description: 'Блог-платформа с редактором статей, системой комментариев, тегами и SEO-оптимизацией. Разработана как часть портфолио, размещена на GitHub Pages.',
-    shortDescription: 'Блог-платформа с редактором статей и SEO.',
+    description: 'Blog platform with article editor, comment system, tags and SEO optimization. Part of portfolio, hosted on GitHub Pages.',
+    shortDescription: 'Blog platform with article editor and SEO.',
     stack: ['HTML5', 'CSS3', 'SCSS', 'JavaScript (ES6+)', 'BEM'],
     image: '/images/projects/arik.jpg',
     githubUrl: 'https://github.com/Slav468/arik',

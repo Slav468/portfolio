@@ -1,5 +1,13 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, beforeEach, afterEach } from 'vitest';
 import { getInitialTheme } from './useTheme';
+
+beforeEach(() => {
+  (globalThis as any).window = {};
+});
+
+afterEach(() => {
+  delete (globalThis as any).window;
+});
 
 describe('getInitialTheme', () => {
   it('returns "light" when no sessionStorage and no system preference', () => {
@@ -8,8 +16,8 @@ describe('getInitialTheme', () => {
   });
 
   it('returns "dark" when system prefers dark', () => {
-    const originalMatchMedia = window.matchMedia;
-    (window as any).matchMedia = (query: string) => new Promise<string>((resolve) => {
+    const originalMatchMedia = (globalThis as any).window.matchMedia;
+    (globalThis as any).window.matchMedia = (query: string) => new Promise<string>((resolve) => {
       if (query === '(prefers-color-scheme: dark)') {
         resolve(true);
       } else {
@@ -18,6 +26,6 @@ describe('getInitialTheme', () => {
     });
     const theme = getInitialTheme();
     expect(theme).toBe('dark');
-    (window as any).matchMedia = originalMatchMedia;
+    (globalThis as any).window.matchMedia = originalMatchMedia;
   });
 });
