@@ -9,6 +9,7 @@ describe('projects', () => {
 
   it('each entry has all fields defined', () => {
     projects.forEach((p: Project) => {
+      expect(typeof p === 'object').toBe(true);
       expect(p.id).toBeDefined();
       expect(p.title).toBeDefined();
       expect(p.slug).toBeDefined();
