@@ -13,13 +13,15 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    const theme = getInitialTheme();
+    document.documentElement.setAttribute('data-theme', theme);
+  }, []);
+
   return (
     <html lang="ru" suppressHydrationWarning>
       <head>
-        <script>
-          const theme = getInitialTheme();
-          document.documentElement.setAttribute('data-theme', theme);
-        </script>
+        <title>Портфолио</title>
       </head>
       <body className={inter?.className || ''}>
         <Header />

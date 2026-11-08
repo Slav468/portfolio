@@ -8,8 +8,7 @@ export function getInitialTheme(): 'light' | 'dark' {
     // ignore
   }
   if (typeof window !== 'undefined') {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    return prefersDark ? 'dark' : 'light';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
   return 'light';
 }
