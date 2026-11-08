@@ -342,3 +342,9 @@
   // Mobile nav links will be hidden by default, shown only when menu is open
   // The desktop styles will override via the navMobileOpen class
 }
+
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
