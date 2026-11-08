@@ -8,7 +8,9 @@ export function getInitialTheme(): 'light' | 'dark' {
     // ignore
   }
   if (typeof window !== 'undefined') {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    const m = window.matchMedia('(prefers-color-scheme: dark)');
+    const prefersDark = m.matches;
+    return prefersDark ? 'dark' : 'light';
   }
   return 'light';
 }
