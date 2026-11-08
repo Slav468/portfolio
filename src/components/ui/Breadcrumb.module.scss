@@ -1,0 +1,17 @@
+@use '@/styles/common';
+
+.breadcrumb {
+  @extend %breadcrumbNav;
+
+  & .separator {
+    @extend %breadcrumbSeparator;
+  }
+
+  & .current {
+    @extend %breadcrumbCurrent;
+  }
+}
+
+.breadcrumbLink {
+  @extend %breadcrumbLink;
+}

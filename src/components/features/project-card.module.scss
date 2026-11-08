@@ -1,6 +1,8 @@
-@use '@/styles/tokens' as *;
+@use '@/styles/common';
 
 .card {
+  @extend %hoverLift;
+
   position: relative;
   isolation: isolate;
   border: 1px solid var(--glass-border);
@@ -45,8 +47,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--color-accent-cyan);
-    outline-offset: 2px;
+    @extend %focusRing;
   }
 
   &.revealed {
@@ -73,6 +74,8 @@
 
 /* ─── Image area ─── */
 .cardImage {
+  @extend %gradientBg;
+  @extend %hoverLift;
   position: relative;
   aspect-ratio: 16 / 10;
   width: 100%;
@@ -81,8 +84,10 @@
   background-repeat: no-repeat;
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   overflow: hidden;
-  /* Subtle image scale on card hover for depth */
-  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card:hover .cardImage {
+  transform: scale(1.03);
 }
 
 .card:hover .cardImage {

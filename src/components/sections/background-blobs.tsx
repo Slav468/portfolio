@@ -43,7 +43,7 @@ export function BackgroundBlobs({
             height: sizes[i][1],
             top: positions[i][0],
             left: positions[i][1],
-            '--animation-duration': `${durs[i]}s`,
+            ['--animation-duration' as any]: `${durs[i]}s`,
           }}
         />
       ))}

@@ -1,0 +1,270 @@
+// ═══════════════════════════════════════════════════════════════════════
+// COMMON — общие паттерны для всех блоков
+// Выносит дубли: кнопки, ховеры, градиенты, фокус, типографику
+// ═══════════════════════════════════════════════════════════════════════
+
+// ──────────────────────────────────────────────────────────────────────
+// BUTTON-LIKE — общий стиль для кнопок/ссылок-акцентов
+// Используется: ctaPrimary, ctaSecondary, .link в project-card
+// ──────────────────────────────────────────────────────────────────────
+
+// Placeholder-селекторы (используются с @extend, чтобы не генерировать лишний CSS)
+%btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.875rem 1.75rem;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  max-width: fit-content;
+  cursor: pointer;
+}
+
+%btnPrimary {
+  @extend %btn;
+  background: var(--color-accent-cyan);
+  color: var(--color-bg-base);
+  border: 1px solid var(--color-accent-cyan);
+
+  &:hover {
+    background: color-mix(in oklch, var(--color-accent-cyan) 90%, white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px color-mix(in oklch, var(--color-accent-cyan) 35%, black);
+  }
+}
+
+%btnSecondary {
+  @extend %btn;
+  background: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+
+  [data-theme='light'] & {
+    & svg {
+      fill: var(--color-text-primary);
+    }
+  }
+
+  &:hover {
+    border-color: var(--color-accent-cyan);
+    color: var(--color-accent-cyan);
+    transform: translateY(-2px);
+    & svg {
+      fill: var(--color-accent-cyan);
+    }
+  }
+}
+
+// ──────────────────────────────────────────────────────────────────────
+// HOVER-LIFT — поднятие блока при наведении
+// ──────────────────────────────────────────────────────────────────────
+
+%hoverLift {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+// ──────────────────────────────────────────────────────────────────────
+// GRADIENT — градиентные элементы (иконки, акценты)
+// ──────────────────────────────────────────────────────────────────────
+
+%gradientText {
+  background: linear-gradient(135deg, var(--color-text-primary), var(--color-accent-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+%gradientBg {
+  background: linear-gradient(135deg, var(--color-accent-cyan), var(--color-accent-purple));
+}
+
+// ──────────────────────────────────────────────────────────────────────
+// FOCUS — доступность: видная рамка для клавиатуры
+// ──────────────────────────────────────────────────────────────────────
+
+%breadcrumbNav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+}
+
+%breadcrumbLink {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--color-accent-cyan);
+  }
+}
+
+%breadcrumbSeparator {
+  color: var(--color-text-muted);
+}
+
+%breadcrumbCurrent {
+  color: var(--color-text-primary);
+  font-weight: 500;
+  @extend %focusRing;
+}
+
+%focusRing {
+  outline: 2px solid var(--color-accent-cyan);
+  outline-offset: 2px;
+  border-color: var(--color-accent-cyan);
+}
+
+// ──────────────────────────────────────────────────────────────────────
+// NAVIGATION — навигация
+// ──────────────────────────────────────────────────────────────────────
+
+%breadcrumbNav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+}
+
+%breadcrumbLink {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--color-accent-cyan);
+  }
+}
+
+%breadcrumbSeparator {
+  color: var(--color-text-muted);
+}
+
+%breadcrumbCurrent {
+  color: var(--color-text-primary);
+  font-weight: 500;
+  @extend %focusRing;
+}
+
+// ──────────────────────────────────────────────────────────────────────
+// MOBILE — адаптив для мобильных устройств
+// ──────────────────────────────────────────────────────────────────────
+
+%mobileHeader {
+  // На мобильных устройствах заголовок сужается и меняет отступы
+  // Используется в header.module.scss через @extend %mobileHeader
+  
+  // Настройка для экранов до 768px
+  @media (max-width: 768px) {
+    // Снижаем padding внутри wrapper'а
+    .wrapper {
+      padding: var(--space-md) var(--space-md);
+    }
+    
+    // Логотип уменьшаем
+    .logo {
+      flex-shrink: 0;
+    }
+    
+    // Навигация сжимается
+    .nav {
+      gap: 0.25rem;
+    }
+    
+    .navLink {
+      padding: 0.3125rem 0.625rem;
+      font-size: 0.75rem;
+    }
+    
+    // ThemeToggle занимает меньше места
+    .themeToggle {
+      width: 1.75rem;
+      height: 1.75rem;
+    }
+  }
+}
+
+// ──────────────────────────────────────────────────────────────────────
+// TYPE — общая типографика для текстовых блоков
+// ──────────────────────────────────────────────────────────────────────
+
+%textKicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-accent-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-left: 1.5rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0.75rem;
+    height: 0.125rem;
+    background: var(--color-accent-cyan);
+    border-radius: 2px;
+  }
+}
+
+%textTitle {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 800;
+  color: var(--color-text-primary);
+  margin-bottom: 1.5rem;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+// ──────────────────────────────────────────────────────────────────────
+// SECTION COMMON — общие обёртки секций
+// ──────────────────────────────────────────────────────────────────────
+
+%sectionCommon {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// ──────────────────────────────────────────────────────────────────────
+// REVEAL — анимация появления (прокрутка/загрузка)
+// Используется: reveal, revealed в разных компонентах
+// ──────────────────────────────────────────────────────────────────────
+
+%reveal {
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+%revealRevealed {
+  opacity: 1;
+  transform: translateY(0);
+}

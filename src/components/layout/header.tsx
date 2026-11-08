@@ -36,11 +36,21 @@ export function Header() {
   const [logoVisible, setLogoVisible] = useState(false);
   const [navVisible, setNavVisible] = useState(false);
   const [toggleVisible, setToggleVisible] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const lastScrollY = useRef(0);
   const ticking = useRef(false);
 
-  // Снимаем класс входа после окончания анимации, чтобы не влиять на производительность
+  // Mobile menu open/close handling
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const nav = document.querySelector('.navMobileOpen');
+    if (menuOpen) {
+      nav?.classList.add('navOpen');
+    } else {
+      nav?.classList.remove('navOpen');
+    }
+  }, [menuOpen]);
   useEffect(() => {
     const timer = setTimeout(() => setEntering(false), 650);
     return () => clearTimeout(timer);
@@ -122,10 +132,24 @@ export function Header() {
           </Link>
         </div>
 
+        {window.innerWidth < 768 && (
+          <button
+            className={styles.hamburgerMenu}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Открыть меню"
+            aria-expanded={menuOpen}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        )}
+
         <nav
           className={[
             styles.nav,
             navVisible && styles.navEntering,
+            menuOpen && styles.navMobileOpen,
           ]
             .filter(Boolean)
             .join(' ')}
@@ -145,6 +169,7 @@ export function Header() {
         <div
           className={[
             toggleVisible && styles.themeToggleEntering,
+            menuOpen && styles.themeToggleMobileEntering,
           ]
             .filter(Boolean)
             .join(' ')}
