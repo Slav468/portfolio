@@ -7,5 +7,9 @@ export function getInitialTheme(): 'light' | 'dark' {
   } catch {
     // ignore
   }
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  if (typeof window !== 'undefined') {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return prefersDark ? 'dark' : 'light';
+  }
+  return 'light';
 }
