@@ -1,7 +1,7 @@
 import { Project } from './types';
 
 export const projects: Project[] = [
-  {
+  new Project({
     id: '1',
     title: 'Blog platform Arik',
     slug: 'arik',
@@ -14,5 +14,5 @@ export const projects: Project[] = [
     demoUrl: 'https://slav468.github.io/arik/',
     featured: true,
     createdAt: '2025-08-05'
-  }
+  })
 ];
