@@ -159,7 +159,8 @@ export const aboutData: AboutData = {
   ],
   stats: [
     { number: '10+', label: 'Проектов', description: 'Коммерческих проектов: лендинги, каталоги, корпоративные сайты' },
-    { number: '3+', label: 'Лет опыта', description: 'Практический опыт в frontend-разработке' },
+    { number: '3+', label: 'Коммерческий опыт', description: 'Подтвержденный работой: ЧУП Компания Яр, ITOBLAKA' },
+    { number: '5+', label: 'Общий практический опыт', description: 'Курсы Udemy/RSSchool, пет-проекты, собственная разработка с 2021 года' },
     { number: '15+', label: 'Технологий', description: 'JavaScript, TypeScript, React, SCSS, BEM, Git и др.' },
     { number: '100%', label: 'Качество кода', description: 'Чистый код, валидность, A11y, SEO' },
   ],
