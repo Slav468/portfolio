@@ -2,72 +2,12 @@
 @use '@/styles/layout';
 @use '@/styles/utilities';
 
-/* Container wrapper for sections */
-.container {
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 var(--space-md);
-}
-
 .section {
   max-width: 80rem;
   margin-left: auto;
   margin-right: auto;
   padding: var(--space-xl) 0;
   margin-bottom: var(--space-xl);
-}
-
-.flex {
-  display: flex;
-}
-
-.grid {
-  display: grid;
-}
-
-/* Entrance animations for section items */
-.section-animate .expItem {
-  animation: slideIn 0.6s ease-out forwards;
-}
-
-.section-animate .expItem:nth-child(2) {
-  animation-delay: 0.1s;
-}
-
-.section-animate .expItem:nth-child(3) {
-  animation-delay: 0.2s;
-}
-
-.section-animate .expItem:nth-child(4) {
-  animation-delay: 0.3s;
-}
-
-.section-animate .eduItem {
-  animation: fadeInUp 0.5s ease-out forwards;
-}
-
-.section-animate .eduItem:nth-child(2) {
-  animation-delay: 0.1s;
-}
-
-.section-animate .eduItem:nth-child(3) {
-  animation-delay: 0.2s;
-}
-
-.section-animate .contactItem {
-  animation: fadeIn 0.4s ease-out forwards;
-}
-
-.section-animate .contactItem:nth-child(2) {
-  animation-delay: 0.1s;
-}
-
-.section-animate .contactItem:nth-child(3) {
-  animation-delay: 0.2s;
-}
-
-.section-animate .contactItem:nth-child(4) {
-  animation-delay: 0.3s;
 }
 
 .pdfLink {
