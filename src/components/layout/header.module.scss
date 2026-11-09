@@ -9,15 +9,6 @@
   }
 }
 
-@keyframes glow-pulse {
-  0%, 100% {
-    box-shadow: 0 0 0.5rem oklch(0.45 0.20 185 / 0.35);
-  }
-  50% {
-    box-shadow: 0 0 1.25rem oklch(0.45 0.20 185 / 0.6);
-  }
-}
-
 @keyframes border-shimmer {
   0% {
     background-position: 0% 50%;
@@ -27,6 +18,18 @@
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+
+// Staggered появление элементов хедера при загрузке
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -64,7 +67,7 @@
   }
 
   // Входная анимация шапки при загрузке страницы (continuity)
-  &.header-entering {
+  &.headerEntering {
     animation: slideIn 0.6s ease-out both;
   }
 
@@ -80,7 +83,7 @@
 }
 
 .wrapper {
-  position: relative; // опорный элемент для абсолютного позиционирования ThemeToggle
+  position: relative; // опорный элемент для абсолютного позиционирования мобильного меню
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -108,6 +111,7 @@
   gap: 0.5rem;
   flex-shrink: 0;
   transition: transform var(--transition-fast);
+
   &:hover {
     transform: scale(1.05);
   }
@@ -159,28 +163,11 @@
   &:hover {
     background-color: var(--color-bg-elevated);
     border-color: transparent;
-    box-shadow: 0 0 1.5rem oklch(0.45 0.20 185 / 0.3);
+    box-shadow: 0 0 1.5rem oklch(0.45 0.2 185 / 0.3);
 
     &::before {
       opacity: 1;
     }
-  }
-
-  // Мягкое пульсирующее свечение акцента (feedback, не раздражает)
-  &.logo-glow {
-    animation: glow-pulse 3s ease-in-out infinite;
-  }
-}
-
-.logoText {
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  color: var(--color-text-primary);
-  transition: color var(--transition-fast);
-
-  .accent {
-    color: var(--color-accent-cyan);
   }
 }
 
@@ -213,7 +200,7 @@
     background: linear-gradient(90deg, var(--color-accent-cyan), var(--color-accent-purple));
     border-color: transparent;
     transform: translateY(-1px);
-    box-shadow: 0 0 1rem oklch(0.45 0.20 185 / 0.35);
+    box-shadow: 0 0 1rem oklch(0.45 0.2 185 / 0.35);
   }
 
   &:focus-visible {
@@ -228,24 +215,8 @@
     color: var(--color-bg-base);
     background-color: var(--color-accent-cyan);
     border-color: var(--color-accent-cyan);
-    box-shadow: 0 0 1rem oklch(0.45 0.20 185 / 0.35);
+    box-shadow: 0 0 1rem oklch(0.45 0.2 185 / 0.35);
   }
-}
-
-// Staggered появление элементов хедера при загрузке
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(0.5rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.logoEntering {
-  animation: fadeInUp 0.5s ease-out both;
 }
 
 .navEntering {
@@ -256,95 +227,91 @@
   animation: fadeInUp 0.5s ease-out 0.2s both;
 }
 
-.themeToggleMobileEntering {
-  animation: fadeInUp 0.5s ease-out both;
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-/* Mobile hamburger menu */
-.hamburgerMenu {
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
+.hamburger {
   display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  background: none;
+  border: 0;
+  color: var(--color-text-primary);
+  cursor: pointer;
 
-  /* Show on mobile - breakpoint matches JS: window.innerWidth < 768 */
+  span {
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+    transition:
+      transform 0.2s,
+      opacity 0.2s;
+  }
+
   @media (max-width: 768px) {
     display: flex;
   }
+}
 
-  span {
-    display: block;
-    width: 1.5rem;
-    height: 0.125rem;
-    background-color: var(--color-text-primary);
-    border-radius: var(--radius-sm);
-    transition: transform var(--transition-fast), opacity var(--transition-fast);
+.menuOpen .hamburger {
+  span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
   }
-
   span:nth-child(2) {
-    margin: 0.25rem 0;
+    opacity: 0;
   }
-
-  &:focus-visible {
-    outline: 2px solid var(--color-accent-cyan);
-    outline-offset: 2px;
+  span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
   }
 }
 
-/* Mobile nav - open state */
-.navMobileOpen {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 280px;
-  max-width: 80vw;
-  background: var(--glass-bg);
-  border-left: 1px solid var(--glass-border);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  z-index: 100;
-  transform: translateX(100%);
-  transition: transform var(--transition-normal) ease-out;
-  padding-top: var(--space-xl);
+// Мобильное меню (должно идти в конце, чтобы переопределять базовые стили)
+@media (max-width: 768px) {
+  // На мобильных fade-in анимация не нужна: fill-mode both перебил бы closed-состояние
+  .navEntering {
+    animation: none;
+  }
 
-  &.navOpen {
-    transform: translateX(0);
+  .nav {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+    padding: 0.5rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: var(--glass-shadow);
+
+    // Закрытое состояние
+    opacity: 0;
+    transform: translateY(-0.5rem);
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity var(--transition-normal) ease-out,
+      transform var(--transition-normal) ease-out,
+      visibility var(--transition-normal);
+  }
+
+  .navMobileOpen {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto;
   }
 
   .navLink {
-    display: block;
-    padding: 0.875rem 1.5rem;
+    padding: 0.875rem 1rem;
     font-size: 1rem;
-    color: var(--color-text-primary);
-    text-decoration: none;
-    border-bottom: 1px solid var(--glass-border);
-
-    &:hover {
-      color: var(--color-accent-cyan);
-      background: var(--color-bg-elevated);
-    }
-
-    &:focus-visible {
-      outline: 2px solid var(--color-accent-cyan);
-      outline-offset: 2px;
-    }
   }
-}
-
-/* Hide nav links on mobile when not in menu state */
-.navLink {
-  // Mobile nav links will be hidden by default, shown only when menu is open
-  // The desktop styles will override via the navMobileOpen class
-}
-
-.mobileMenu {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }

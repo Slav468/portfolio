@@ -128,9 +128,16 @@
 }
 
 %focusRing {
+  // Visible focus ring for keyboard navigation
+  // Minimum 2:1 contrast ratio against surrounding background (WCAG AA)
   outline: 2px solid var(--color-accent-cyan);
   outline-offset: 2px;
-  border-color: var(--color-accent-cyan);
+  
+  // Support forced-colors mode (Windows High Contrast, macOS Color Controls)
+  @media (forced-colors: active) {
+    outline: 2px solid CanvasText;
+    outline-offset: 2px;
+  }
 }
 
 // ──────────────────────────────────────────────────────────────────────

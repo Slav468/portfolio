@@ -1,16 +1,14 @@
+'use client';
+
 import '@/styles/main.scss';
 import { Inter } from 'next/font/google';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { MainContent } from '@/components/layout/MainContent';
 import { getInitialTheme } from '@/hooks/useTheme';
+import { useEffect } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
-
-export const metadata = {
-  title: 'Портфолио',
-  description: 'Портфолио фронтенд-разработчика',
-};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   useEffect(() => {

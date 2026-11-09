@@ -6,81 +6,61 @@ import styles from './header.module.scss';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import { usePathname } from 'next/navigation';
 
-const LOGO_SVG = (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <circle cx="12" cy="12" r="10" />
-    <path d="M8 12a4 4 0 0 1 4-4" />
-    <path d="M16 12a4 4 0 0 1-4 4" />
-  </svg>
-);
-
 const NAV_LINKS = [
   { label: 'Обо мне', href: '/about' },
   { label: 'Проекты', href: '/projects' },
   { label: 'Контакты', href: '/contact' },
- ] as const;
+] as const;
 
 const HIDE_THRESHOLD = 60; // скролл ниже этого значения — хедер не прячем
 
 export function Header() {
   const pathname = usePathname();
   const [entering, setEntering] = useState(true);
-  const [logoVisible, setLogoVisible] = useState(false);
   const [navVisible, setNavVisible] = useState(false);
-  const [toggleVisible, setToggleVisible] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const lastScrollY = useRef(0);
   const ticking = useRef(false);
 
-  // Mobile menu toggle
-  const hamburger = document.querySelector('.hamburgerMenu');
-  if (hamburger) {
-    hamburger.addEventListener('click', () => {
-      setMenuOpen(!menuOpen);
-    });
-  }
-
-  // Scroll hide header
+  // Закрывать меню при смене страницы
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    setMenuOpen(false);
+  }, [pathname]);
+
+  // Блокировка скролла при открытом меню
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
+
+  // Скрытие хедера при скролле
+  useEffect(() => {
     const onScroll = () => {
       const currentScrollY = window.scrollY;
-      if (!ticking.current) {
-        window.requestAnimationFrame(() => {
-          const isScrollingDown = currentScrollY > lastScrollY.current;
-          const isBelowThreshold = currentScrollY > HIDE_THRESHOLD;
-          if (isScrollingDown && isBelowThreshold) {
-            setHidden(true);
-          } else {
-            setHidden(false);
-          }
-          lastScrollY.current = currentScrollY;
-          ticking.current = false;
-        });
-        ticking.current = true;
-      }
+      if (ticking.current) return;
+      ticking.current = true;
+      window.requestAnimationFrame(() => {
+        const isScrollingDown = currentScrollY > lastScrollY.current;
+        setHidden(isScrollingDown && currentScrollY > HIDE_THRESHOLD);
+        lastScrollY.current = currentScrollY;
+        ticking.current = false;
+      });
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Stagger entrance
+  // Анимация появления
   useEffect(() => {
-    const t1 = setTimeout(() => setLogoVisible(true), 100);
-    const t2 = setTimeout(() => setNavVisible(true), 220);
-    const t3 = setTimeout(() => setToggleVisible(true), 340);
+    const t1 = setTimeout(() => setNavVisible(true), 220);
+    // с запасом относительно длины slideIn (0.6s)
+    const t2 = setTimeout(() => setEntering(false), 700);
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
-      clearTimeout(t3);
     };
   }, []);
 
@@ -89,7 +69,7 @@ export function Header() {
       className={[
         styles.header,
         entering && styles.headerEntering,
-        hidden && styles.headerHidden,
+        hidden && !menuOpen && styles.headerHidden,
         menuOpen && styles.menuOpen,
       ]
         .filter(Boolean)
@@ -97,41 +77,51 @@ export function Header() {
     >
       <div className={styles.wrapper}>
         <div className={styles.logo}>
-          <Link href="/" className={styles.logoLink}>
+          <Link href="/" className={styles.logoLink} aria-label="На главную">
             <div className={styles.logoIcon} />
           </Link>
         </div>
 
-        {menuOpen ? (
-          <ul className={styles.mobileMenu}>
-            <li><a href="/about" class="navLink">Обо мне</a></li>
-            <li><a href="/projects" class="navLink">Проекты</a></li>
-            <li><a href="/contact" class="navLink">Контакты</a></li>
-          </ul>
-        ) : (
-          <nav
-            className={[
-              styles.nav,
-              navVisible && styles.navEntering,
-              menuOpen && styles.navMobileOpen,
-            ]
+        <nav
+          id="main-nav"
+          className={[
+            styles.nav,
+            navVisible && styles.navEntering,
+            menuOpen && styles.navMobileOpen,
+          ]
             .filter(Boolean)
             .join(' ')}
-          >
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className={styles.navLink}
-                aria-current={link.href === pathname ? 'page' : undefined}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-        )}
+        >
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={styles.navLink}
+              aria-current={link.href === pathname ? 'page' : undefined}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
 
-        <div className={styles.themeToggleEntering}>{ThemeToggle}</div>
+        <div className={styles.actions}>
+          <div className={styles.themeToggleEntering}>
+            <ThemeToggle />
+          </div>
+
+          <button
+            type="button"
+            className={styles.hamburger}
+            aria-expanded={menuOpen}
+            aria-controls="main-nav"
+            aria-label={menuOpen ? 'Закрыть меню' : 'Открыть меню'}
+            onClick={() => setMenuOpen((prev) => !prev)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
       </div>
     </header>
   );

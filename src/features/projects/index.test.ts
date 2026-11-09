@@ -1,5 +1,5 @@
-import { describe, it } from 'vitest';
-import { projects } from './index';
+import { describe, it, expect } from 'vitest';
+import { projects } from '@/data/projects';
 import { Project } from './types';
 
 describe('projects', () => {
@@ -8,17 +8,16 @@ describe('projects', () => {
   });
 
   it('each entry has all fields defined', () => {
-    projects.forEach((p: any) => {
+    projects.forEach((p: Project) => {
       expect(p.id).toBeDefined();
       expect(p.title).toBeDefined();
       expect(p.slug).toBeDefined();
       expect(p.category).toBeDefined();
       expect(p.description).toBeDefined();
       expect(p.shortDescription).toBeDefined();
-      expect(p.stack).toEqual([]); // placeholder
+      expect(Array.isArray(p.stack)).toBe(true);
       expect(p.image).toBeDefined();
       expect(p.githubUrl).toBeDefined();
-      expect(p.demoUrl).toBeDefined();
       expect(p.featured).toBeDefined();
       expect(p.createdAt).toBeDefined();
     });

@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 export function getInitialTheme(): 'light' | 'dark' {
   try {
     const stored = sessionStorage.getItem('theme');

@@ -27,39 +27,26 @@ const EXPERIENCE_ITEMS = [
 ] as const;
 
 const EDUCATION_ITEMS = [
-  { course: 'Udemy — Full course modern TypeScript', year: 2025 },
-  { course: 'Udemy — Full course JavaScript + React', year: 2025 },
-  { course: 'RSSchool — JavaScript/Front-end', year: 2023 },
-  { course: 'Udemy — Practical JavaScript (Advanced)', year: 2023 },
+  { course: 'Udemy — Web developer', year: 2021 },
   { course: 'Udemy — Modern JavaScript', year: 2022 },
   { course: 'Udemy — Complete JavaScript Course (Includes 80 Tasks)', year: 2022 },
-  { course: 'Udemy — Web Developer', year: 2021 },
+  { course: 'Udemy — Practical JavaScript (Advanced)', year: 2023 },
+  { course: 'RSSchool — JavaScript/Front-end', year: 2023 },
+  { course: 'Udemy — JavaScript + React', year: 2025 },
+  { course: 'Udemy — modern TypeScript', year: 2025 },
 ] as const;
 
-interface ContactItem {
-  label: string;
-  value: string;
-  href: string;
+interface AboutSectionProps {
+  showSkills?: boolean;
+  showEducation?: boolean;
+  showLanguages?: boolean;
 }
 
-const CONTACTS: ContactItem[] = [
-  { label: 'Телефон', value: '+375 29 766 25 91', href: 'tel:+375297662591' },
-  { label: 'Email', value: 'sergeyskoromnik@gmail.com', href: 'mailto:sergeyskoromnik@gmail.com' },
-  { label: 'Telegram', value: '@dzedbaraded4021', href: 'https://t.me/dzedbaraded4021' },
-  {
-    label: 'LinkedIn',
-    value: 'sergey-scoromnik',
-    href: 'https://linkedin.com/in/sergey-scoromnik',
-  },
-  { label: 'GitHub', value: 'Slav468', href: 'https://github.com/Slav468' },
-  { label: 'hh.ru', value: 'Резюме', href: 'https://hh.ru/resume/sergey-scoromnik' },
-];
-
-export function AboutSection() {
+export function AboutSection({ showLanguages = true }: AboutSectionProps) {
   const { ref: introRef, isInView: introVisible } = useInView({ once: true });
   const { ref: expRef, isInView: expVisible } = useInView({ once: true });
   const { ref: eduRef, isInView: eduVisible } = useInView({ once: true });
-  const { ref: contactsRef, isInView: contactsVisible } = useInView({ once: true });
+  const { ref: skillsRef, isInView: skillsVisible } = useInView({ once: true });
   const { ref: pdfRef, isInView: pdfVisible } = useInView({ once: true });
 
   return (
@@ -108,24 +95,62 @@ export function AboutSection() {
       </div>
 
       <div
-        className={`${styles.contactsSection} reveal ${contactsVisible ? 'revealed' : ''}`}
-        ref={contactsRef}
+        className={`${styles.skillsSection} reveal ${skillsVisible ? 'revealed' : ''}`}
+        ref={skillsRef}
       >
-        <h3 className={styles.stackTitle}>Контакты</h3>
-        <ul className={styles.contactsList}>
-          {CONTACTS.map((c) => (
-            <li key={c.label} className={styles.contactItem}>
-              <span className={styles.contactLabel}>{c.label}:</span>
-              {c.href ? (
-                <ExternalLink href={c.href} className={styles.contactValue}>
-                  {c.value}
-                </ExternalLink>
-              ) : (
-                <span className={styles.contactValue}>{c.value}</span>
-              )}
-            </li>
-          ))}
-        </ul>
+        <h3 className={styles.stackTitle}>Навыки</h3>
+        <div className={styles.skillsGrid}>
+          <div className={styles.skillCategory}>
+            <h4>Hard Skills</h4>
+            <ul className={styles.skillList}>
+              <li>HTML5</li>
+              <li>CSS3 / SCSS / SASS</li>
+              <li>JavaScript (ES6+)</li>
+              <li>TypeScript</li>
+              <li>React</li>
+              <li>Next.js</li>
+              <li>Responsive Web Design</li>
+              <li>Cross-browser Development</li>
+              <li>Accessibility (a11y)</li>
+              <li>SEO-friendly markup</li>
+            </ul>
+          </div>
+          <div className={styles.skillCategory}>
+            <h4>Tools & Workflow</h4>
+            <ul className={styles.skillList}>
+              <li>Git</li>
+              <li>GitHub</li>
+              <li>Vite</li>
+              <li>npm</li>
+              <li>Figma</li>
+              <li>Browser DevTools</li>
+              <li>AI-assisted development tools</li>
+            </ul>
+          </div>
+          <div className={styles.skillCategory}>
+            <h4>Soft Skills</h4>
+            <ul className={styles.skillList}>
+              <li>Problem solving</li>
+              <li>Team collaboration</li>
+              <li>Code review</li>
+              <li>Time Management</li>
+              <li>Critical Thinking</li>
+              <li>Self-learning</li>
+              <li>Attention to detail</li>
+              <li>Technical communication</li>
+            </ul>
+          </div>
+          {showLanguages && (
+            <div className={styles.skillCategory}>
+              <h4>Languages</h4>
+              <ul className={styles.skillList}>
+                <li>English (A2)</li>
+                <li>Russian (C1)</li>
+                <li>Belarus (Native)</li>
+              </ul>
+            </div>
+          )}
+        </div>
       </div>
 
       <div className={`${styles.pdfWrapper} reveal ${pdfVisible ? 'revealed' : ''}`} ref={pdfRef}>
