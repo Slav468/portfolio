@@ -44,100 +44,119 @@ export interface AboutData {
 }
 
 export const aboutData: AboutData = {
-  name: 'Сергей Скоромник',
-  role: 'Frontend Developer',
+  name: 'Скоромник Сергей Николаевич',
+  role: 'Frontend-разработчик',
   location: 'Минск, Беларусь',
   bio:
-    'Frontend-разработчик с 3+ годами коммерческого опыта в создании отзывчивых и ' +
-    'кроссбраузерных веб-интерфейсов. Сильная основа в HTML5, CSS3, SCSS/SASS, BEM и ' +
-    'JavaScript (ES6+). Опыт разработки переиспользуемых UI-компонентов, адаптивной и ' +
-    'SEO-дружественной вёрстки, работы с DOM API, браузерным хранилищем, сторонними ' +
-    'интеграциями, анимациями и отладкой фронтенда. В данный момент расширяю экспертизу в ' +
-    'React, TypeScript и Next.js через создание современных веб-приложений и личных проектов.',
+    'Frontend-разработчик с более чем 3 годами практического опыта в разработке адаптивных, ' +
+    'производительных и масштабируемых пользовательских интерфейсов — без искусственного ' +
+    'расширения стека и накрутки опыта.\n\n' +
+    'Основной стек:\n' +
+    '• JavaScript — работа с DOM, модульная структура, оптимизация логики.\n' +
+    '• TypeScript — практический опыт в учебных и пет-проектах.\n' +
+    '• React (Next.js) — разработка интерфейсов в собственных проектах (хуки, компоненты, состояние).\n' +
+    '• CSS Flexbox / Grid — адаптивные, сложные и многоуровневые сетки.\n' +
+    '• SCSS (SASS) — модульная архитектура, переменные, миксины, оптимизация структуры.\n' +
+    '• BEM — чистая, поддерживаемая и масштабируемая структура.\n' +
+    '• GIT / Gitverse — ветвление, командная работа.\n' +
+    '• AI-инструменты — ускорение разработки, автоматизация рутинных процессов.\n\n' +
+    'Качество и стандарты:\n' +
+    '• Чистый и понятный код.\n' +
+    '• Адаптивность и кроссбраузерность.\n' +
+    '• Валидность HTML/CSS.\n' +
+    '• Доступность (A11y).\n' +
+    '• SEO-оптимизация.',
   experience: [
     {
       id: 'exp-1',
-      role: 'Frontend Developer',
-      company: 'Web Studio Yar',
-      period: '2025 – 2026',
+      role: 'Frontend-разработчик',
+      company: 'ЧУП Компания Яр (yar-studio.com/)',
+      period: 'Июнь 2025 — Июль 2026',
       location: 'Минск, Беларусь',
       stack:
-        'JavaScript, HTML, CSS, jQuery, Git, Figma, Vite, GSAP, Swiper, Fancybox, lightGallery, noUiSlider',
+        'JavaScript, HTML, CSS, SCSS (SASS), BEM, jQuery, Git, Figma, Vite, GSAP, Swiper, Fancybox, lightGallery, noUiSlider, Яндекс SmartCaptcha',
       description:
-        'Создание адаптивных и кроссбраузерных вёрсток для 10+ коммерческих проектов на HTML, SCSS/SASS, BEM и JavaScript. ' +
-        'Разработка модульных UI-компонентов и интерактивных интерфейсов. Внедрение анимаций (GSAP, CSS transitions, keyframes), ' +
-        'интеграция Yandex SmartCaptcha, работа с DOM APIs, localStorage/sessionStorage, cookies, MutationObserver, IntersectionObserver.',
+        'Разрабатывал и поддерживал пользовательские интерфейсы для коммерческих веб-проектов. Участвовал в полном цикле разработки: от анализа макетов до интеграции и оптимизации. ' +
+        'Выполнял адаптивную и кроссбраузерную верстку для 10+ коммерческих проектов (корпоративные сайты, лендинги, каталоги). Разрабатывал UI-компоненты на HTML, SCSS (SASS), BEM и JavaScript. ' +
+        'Реализовывал анимации с использованием GSAP, CSS transitions и keyframes. Оптимизировал загрузку страниц: SVG-спрайты, lazy-loading, оптимизация CSS. ' +
+        'Интегрировал Яндекс SmartCaptcha в клиентскую часть. Работал с браузерными API: localStorage, sessionStorage, cookies, MutationObserver, IntersectionObserver. ' +
+        'Настраивал и дорабатывал библиотеки: Swiper, Fancybox, lightGallery, noUiSlider. Взаимодействовал с backend-разработчиками и дизайнерами для корректной интеграции. ' +
+        'Использовал AI-инструменты для ускорения разработки и автоматизации рутинных задач.',
     },
     {
       id: 'exp-2',
-      role: 'Frontend Developer',
-      company: 'Web studio Itoblaka',
-      period: '2023 – 2025',
+      role: 'Frontend-разработчик / HTML-верстальщик',
+      company: 'ITOBLAKA (ИП Симонян В.Г., itoblaka.by)',
+      period: 'Август 2023 — Июнь 2025',
       location: 'Минск, Беларусь',
-      stack: 'JavaScript, HTML, CSS, jQuery, Git, Figma',
+      stack: 'JavaScript, HTML, CSS, SCSS, BEM, jQuery, Git, Figma',
       description:
-        'Доработка и расширение функционала платформы конструктора сайтов. Разработка проектов с нуля на HTML5, CSS3, SCSS, BEM, JavaScript и jQuery. ' +
-        'Вёрстка интернет-магазинов, корпоративных сайтов и каталогов с 0. Интеграция кастомных и сторонних скриптов, отладка фронтенда/бэкенда, ' +
-        'работа с Git (branching, code review).',
+        'Работал над развитием конструктора сайтов и занимался разработкой коммерческих проектов: интернет-магазины, каталоги, корпоративные сайты. ' +
+        'Создавал и развивал функциональность конструктора сайтов и новые UI-модули. Выполнял верстку проектов «с нуля» на HTML5, CSS3, SCSS, BEM, JavaScript, jQuery. ' +
+        'Обеспечивал адаптивность, валидность и SEO-дружелюбность верстки. Интегрировал сторонние и собственные скрипты для расширения функциональности. ' +
+        'Исправлял баги и повышал стабильность интерфейсов. Взаимодействовал с PHP-разработчиком при интеграции клиентской части. ' +
+        'Работал с Git: ветвление, code review, поддержание чистоты репозитория.',
     },
   ],
   education: [
-    { id: 'edu-1', course: 'Udemy — Web developer', year: 2021 },
-    { id: 'edu-2', course: 'Udemy — Modern JavaScript', year: 2022 },
-    { id: 'edu-3', course: 'Udemy — Complete JavaScript Course (Includes 80 Tasks)', year: 2022 },
-    { id: 'edu-4', course: 'Udemy — Practical JavaScript (Advanced)', year: 2023 },
-    { id: 'edu-5', course: 'RSSchool — JavaScript/Front-end', year: 2023 },
-    { id: 'edu-6', course: 'Udemy — JavaScript + React', year: 2025 },
-    { id: 'edu-7', course: 'Udemy — modern TypeScript', year: 2025 },
+    { id: 'edu-1', course: 'ЧИУП — Высшее образование', year: 2011 },
+    { id: 'edu-2', course: 'Udemy — Полный курс по современному TypeScript', year: 2025 },
+    { id: 'edu-3', course: 'Udemy — Полный курс по JavaScript + React (с нуля до результата)', year: 2025 },
+    { id: 'edu-4', course: 'RSSchool — JavaScript/Front-end. Pre-school', year: 2023 },
+    { id: 'edu-5', course: 'Udemy — Практический JavaScript (Продвинутый уровень)', year: 2023 },
+    { id: 'edu-6', course: 'Udemy — Современный JavaScript с нуля на реальных проектах', year: 2022 },
+    { id: 'edu-7', course: 'Udemy — JavaScript: Полный Курс по JavaScript (Включает 80 Задач)', year: 2022 },
+    { id: 'edu-8', course: 'Udemy — Web-разработчик 2021', year: 2021 },
   ],
   skills: [
     {
       id: 'skills-hard',
       title: 'Hard Skills',
       items: [
-        'HTML5',
-        'CSS3 / SCSS / SASS',
-        'JavaScript (ES6+)',
+        'JavaScript',
         'TypeScript',
         'React',
         'Next.js',
-        'Responsive Web Design',
-        'Cross-browser Development',
-        'Accessibility (a11y)',
-        'SEO-friendly markup',
+        'HTML5',
+        'CSS3',
+        'SCSS (SASS)',
+        'BEM',
+        'AJAX',
+        'JSON',
+        'API',
+        'Верстка',
+        'Git',
+        'Vite',
+        'Figma',
       ],
     },
     {
       id: 'skills-tools',
-      title: 'Tools & Workflow',
+      title: 'Инструменты и рабочий процесс',
       items: [
-        'Git',
+        'Git / Gitverse',
         'GitHub',
         'Vite',
         'npm',
         'Figma',
-        'Browser DevTools',
-        'AI-assisted development tools',
+        'AI-инструменты',
+        'Code review',
       ],
     },
     {
       id: 'skills-soft',
-      title: 'Soft Skills',
+      title: 'Личные качества',
       items: [
-        'Problem solving',
-        'Team collaboration',
-        'Code review',
-        'Time Management',
-        'Critical Thinking',
-        'Self-learning',
-        'Attention to detail',
-        'Technical communication',
+        'Субординация',
+        'Ответственность и соблюдение сроков',
+        'Быстрое обучение',
+        'Работа в команде',
       ],
     },
     {
       id: 'skills-languages',
-      title: 'Languages',
-      items: ['English (A2)', 'Russian (C1)', 'Belarus (Native)'],
+      title: 'Языки',
+      items: ['Русский — родной', 'Белорусский — C2 (в совершенстве)', 'Английский — A2 (элементарный)'],
     },
   ],
   pdfLinks: [
@@ -145,9 +164,9 @@ export const aboutData: AboutData = {
     { href: '/Sergey_Scoromnik_CV.pdf', label: 'скачать полное резюме (CV)' },
   ],
   stats: [
-    { number: '12+', label: 'Проектов', description: 'В портфолио: от лендингов до SPA' },
-    { number: '6+', label: 'Лет опыта', description: 'С 2019 года в веб-разработке' },
-    { number: '15+', label: 'Технологий', description: 'React, TS, Next, SCSS, Vite и др.' },
-    { number: '100%', label: 'Качество кода', description: 'Типизация, линтинг, тесты, a11y' },
+    { number: '10+', label: 'Проектов', description: 'Коммерческих проектов: лендинги, каталоги, корпоративные сайты' },
+    { number: '3+', label: 'Лет опыта', description: 'Практический опыт в frontend-разработке' },
+    { number: '15+', label: 'Технологий', description: 'JavaScript, TypeScript, React, SCSS, BEM, Git и др.' },
+    { number: '100%', label: 'Качество кода', description: 'Чистый код, валидность, A11y, SEO' },
   ],
 };

@@ -58,8 +58,8 @@ describe('aboutData', () => {
 
   it('matches AboutData type shape', () => {
     const data: AboutData = aboutData;
-    expect(data.name).toBe('Сергей Скоромник');
-    expect(data.role).toBe('Frontend Developer');
+    expect(data.name).toBe('Скоромник Сергей Николаевич');
+    expect(data.role).toBe('Frontend-разработчик');
     expect(data.experience.length).toBeGreaterThan(0);
     expect(data.education.length).toBeGreaterThan(0);
     expect(data.skills.length).toBeGreaterThan(0);

@@ -76,7 +76,7 @@ describe('AboutSection', () => {
     act(() => {
       root.render(<AboutSection about={aboutData} />);
     });
-    expect(container.textContent).toContain('Сергей Скоромник');
+    expect(container.textContent).toContain(aboutData.name);
     expect(container.textContent).toContain(aboutData.role);
     expect(container.textContent).toContain(aboutData.location);
     expect(container.textContent).toContain('Обо мне');
