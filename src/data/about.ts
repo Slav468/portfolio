@@ -64,7 +64,7 @@ export const aboutData: AboutData = {
     {
       id: 'exp-1',
       role: 'Frontend-разработчик',
-      company: 'ЧУП Компания Яр (yar-studio.com/)',
+      company: 'ЧУП Компания Яр (yar-studio.com)',
       period: 'Июнь 2025 — Июль 2026',
       location: 'Минск, Беларусь',
       stack:
@@ -95,11 +95,23 @@ export const aboutData: AboutData = {
   education: [
     { id: 'edu-1', course: 'ЧИУП — Высшее образование', year: 2011 },
     { id: 'edu-2', course: 'Udemy — Полный курс по современному TypeScript', year: 2025 },
-    { id: 'edu-3', course: 'Udemy — Полный курс по JavaScript + React (с нуля до результата)', year: 2025 },
+    {
+      id: 'edu-3',
+      course: 'Udemy — Полный курс по JavaScript + React (с нуля до результата)',
+      year: 2025,
+    },
     { id: 'edu-4', course: 'RSSchool — JavaScript/Front-end. Pre-school', year: 2023 },
     { id: 'edu-5', course: 'Udemy — Практический JavaScript (Продвинутый уровень)', year: 2023 },
-    { id: 'edu-6', course: 'Udemy — Современный JavaScript с нуля на реальных проектах', year: 2022 },
-    { id: 'edu-7', course: 'Udemy — JavaScript: Полный Курс по JavaScript (Включает 80 Задач)', year: 2022 },
+    {
+      id: 'edu-6',
+      course: 'Udemy — Современный JavaScript с нуля на реальных проектах',
+      year: 2022,
+    },
+    {
+      id: 'edu-7',
+      course: 'Udemy — JavaScript: Полный Курс по JavaScript (Включает 80 Задач)',
+      year: 2022,
+    },
     { id: 'edu-8', course: 'Udemy — Web-разработчик 2021', year: 2021 },
   ],
   skills: [
@@ -127,15 +139,7 @@ export const aboutData: AboutData = {
     {
       id: 'skills-tools',
       title: 'Инструменты и рабочий процесс',
-      items: [
-        'Git / Gitverse',
-        'GitHub',
-        'Vite',
-        'npm',
-        'Figma',
-        'AI-инструменты',
-        'Code review',
-      ],
+      items: ['Git / Gitverse', 'GitHub', 'Vite', 'npm', 'Figma', 'AI-инструменты', 'Code review'],
     },
     {
       id: 'skills-soft',
@@ -150,7 +154,11 @@ export const aboutData: AboutData = {
     {
       id: 'skills-languages',
       title: 'Языки',
-      items: ['Русский — родной', 'Белорусский — C2 (в совершенстве)', 'Английский — A2 (элементарный)'],
+      items: [
+        'Русский — родной',
+        'Белорусский — C2 (в совершенстве)',
+        'Английский — A2 (элементарный)',
+      ],
     },
   ],
   pdfLinks: [
@@ -158,10 +166,21 @@ export const aboutData: AboutData = {
     { href: '/Sergey_Scoromnik_CV.pdf', label: 'скачать полное резюме (CV)' },
   ],
   stats: [
-    { number: '10+', label: 'Проектов', description: 'Коммерческих проектов: лендинги, каталоги, корпоративные сайты' },
-    { number: '3+', label: 'Коммерческий опыт', description: 'Подтвержденный работой: ЧУП Компания Яр, ITOBLAKA' },
-    { number: '5+', label: 'Общий практический опыт', description: 'Курсы Udemy/RSSchool, пет-проекты, собственная разработка с 2021 года' },
-    { number: '15+', label: 'Технологий', description: 'JavaScript, TypeScript, React, SCSS, BEM, Git и др.' },
+    {
+      number: '10+',
+      label: 'Проектов',
+      description: 'Коммерческих проектов: лендинги, каталоги, корпоративные сайты',
+    },
+    {
+      number: '5+',
+      label: 'Практический опыт',
+      description: 'Курсы Udemy/RSSchool, пет-проекты, собственная разработка с 2021 года',
+    },
+    {
+      number: '15+',
+      label: 'Технологий',
+      description: 'JavaScript, TypeScript, React, SCSS, BEM, Git и др.',
+    },
     { number: '100%', label: 'Качество кода', description: 'Чистый код, валидность, A11y, SEO' },
   ],
 };
