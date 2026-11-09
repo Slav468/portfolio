@@ -16,6 +16,45 @@ vi.mock('@/components/ui/link', () => ({
   ),
 }));
 
+// vite/vitest импортирует SVG как data-URL строку, а не как React-компонент
+// (в продакшене Next.js + @svgr/webpack они компоненты). Мокаем все иконки навыков.
+vi.mock('@/assets/icons/skills/css3.svg', () => ({
+  default: () => <svg data-testid="skill-icon" aria-hidden="true" width="18" height="18" />,
+}));
+vi.mock('@/assets/icons/skills/figma.svg', () => ({
+  default: () => <svg data-testid="skill-icon" aria-hidden="true" width="18" height="18" />,
+}));
+vi.mock('@/assets/icons/skills/git.svg', () => ({
+  default: () => <svg data-testid="skill-icon" aria-hidden="true" width="18" height="18" />,
+}));
+vi.mock('@/assets/icons/skills/github.svg', () => ({
+  default: () => <svg data-testid="skill-icon" aria-hidden="true" width="18" height="18" />,
+}));
+vi.mock('@/assets/icons/skills/html5.svg', () => ({
+  default: () => <svg data-testid="skill-icon" aria-hidden="true" width="18" height="18" />,
+}));
+vi.mock('@/assets/icons/skills/javascript.svg', () => ({
+  default: () => <svg data-testid="skill-icon" aria-hidden="true" width="18" height="18" />,
+}));
+vi.mock('@/assets/icons/skills/jquery.svg', () => ({
+  default: () => <svg data-testid="skill-icon" aria-hidden="true" width="18" height="18" />,
+}));
+vi.mock('@/assets/icons/skills/nextjs.svg', () => ({
+  default: () => <svg data-testid="skill-icon" aria-hidden="true" width="18" height="18" />,
+}));
+vi.mock('@/assets/icons/skills/react.svg', () => ({
+  default: () => <svg data-testid="skill-icon" aria-hidden="true" width="18" height="18" />,
+}));
+vi.mock('@/assets/icons/skills/sass.svg', () => ({
+  default: () => <svg data-testid="skill-icon" aria-hidden="true" width="18" height="18" />,
+}));
+vi.mock('@/assets/icons/skills/typescript.svg', () => ({
+  default: () => <svg data-testid="skill-icon" aria-hidden="true" width="18" height="18" />,
+}));
+vi.mock('@/assets/icons/skills/vite.svg', () => ({
+  default: () => <svg data-testid="skill-icon" aria-hidden="true" width="18" height="18" />,
+}));
+
 import { AboutSection } from './about-section';
 
 describe('AboutSection', () => {
@@ -72,7 +111,7 @@ describe('AboutSection', () => {
     });
   });
 
-  it('renders all skill groups with their items', () => {
+  it('renders all skill groups with their items and icons', () => {
     act(() => {
       root.render(<AboutSection about={aboutData} />);
     });
@@ -81,6 +120,17 @@ describe('AboutSection', () => {
       group.items.forEach((item) => {
         expect(container.textContent).toContain(item);
       });
+    });
+    expect(container.querySelectorAll('[data-testid="skill-icon"]').length).toBeGreaterThan(0);
+  });
+
+  it('renders stat cards', () => {
+    act(() => {
+      root.render(<AboutSection about={aboutData} />);
+    });
+    aboutData.stats.forEach((stat) => {
+      expect(container.textContent).toContain(stat.number);
+      expect(container.textContent).toContain(stat.label);
     });
   });
 

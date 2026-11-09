@@ -25,6 +25,12 @@ export interface PdfLink {
   label: string;
 }
 
+export interface Stat {
+  number: string;
+  label: string;
+  description?: string;
+}
+
 export interface AboutData {
   name: string;
   role: string;
@@ -34,6 +40,7 @@ export interface AboutData {
   education: EducationItem[];
   skills: SkillGroup[];
   pdfLinks: PdfLink[];
+  stats: Stat[];
 }
 
 export const aboutData: AboutData = {
@@ -136,5 +143,11 @@ export const aboutData: AboutData = {
   pdfLinks: [
     { href: '/Sergey_Scoromnik_MiniCV.pdf', label: 'скачать MiniCV' },
     { href: '/Sergey_Scoromnik_CV.pdf', label: 'скачать полное резюме (CV)' },
+  ],
+  stats: [
+    { number: '12+', label: 'Проектов', description: 'В портфолио: от лендингов до SPA' },
+    { number: '6+', label: 'Лет опыта', description: 'С 2019 года в веб-разработке' },
+    { number: '15+', label: 'Технологий', description: 'React, TS, Next, SCSS, Vite и др.' },
+    { number: '100%', label: 'Качество кода', description: 'Типизация, линтинг, тесты, a11y' },
   ],
 };
