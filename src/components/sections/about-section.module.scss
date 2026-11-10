@@ -5,8 +5,8 @@
 .root {
   position: relative;
   overflow: hidden;
-  padding: var(--space-2xl) 0;
-  margin-bottom: var(--space-2xl);
+  padding: var(--space-xl) 0;
+  margin-bottom: var(--space-xl);
 }
 
 .container {
@@ -14,73 +14,55 @@
   z-index: 1;
 }
 
+/* Header — left aligned, compact */
 .header {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  align-items: center;
-  text-align: center;
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-xl);
 }
 
 .kicker {
   @extend %textKicker;
-  align-self: center;
 }
 
 .title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
   color: var(--color-text-primary);
   line-height: 1.1;
   letter-spacing: -0.03em;
-  margin: 0;
-  display: inline-block;
+  margin: var(--space-sm) 0;
   @extend %gradientText;
 }
 
 .subtitle {
-  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-size: clamp(0.9375rem, 1.2vw, 1.125rem);
   color: var(--color-text-secondary);
   line-height: 1.7;
-  max-width: 48rem;
-  margin: 0 auto;
+  max-width: 56rem;
+  margin: 0;
   white-space: pre-line;
 }
 
-.introCard {
-  @extend %hoverLift;
-  position: relative;
-  z-index: 1;
+/* Intro row: avatar left, text right */
+.introRow {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-  padding: var(--space-xl);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  margin-bottom: var(--space-2xl);
+  gap: var(--space-xl);
+  align-items: flex-start;
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-xl);
+  border-bottom: 1px solid var(--color-border);
 
-  @media (min-width: 768px) {
-    flex-direction: row;
+  @media (max-width: 768px) {
+    flex-direction: column;
     align-items: center;
-    text-align: left;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    &:hover {
-      transform: none;
-      box-shadow: none;
-    }
+    text-align: center;
+    gap: var(--space-md);
   }
 }
 
 .avatarWrap {
   flex-shrink: 0;
-  width: 80px;
-  height: 80px;
+  width: 72px;
+  height: 72px;
   border-radius: var(--radius-full);
   background: linear-gradient(135deg, var(--color-accent-cyan), var(--color-accent-purple));
   display: flex;
@@ -94,17 +76,15 @@
     filter: drop-shadow(0 0 2px oklch(0 0 0 / 0.2));
   }
 
-  @media (min-width: 768px) {
-    width: 100px;
-    height: 100px;
-    svg {
-      width: 40px;
-      height: 40px;
-    }
+  @media (max-width: 768px) {
+    width: 80px;
+    height: 80px;
   }
 }
 
 .introText {
+  flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
@@ -118,42 +98,39 @@
 }
 
 .introRole {
-  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  font-size: clamp(0.875rem, 1.2vw, 1rem);
   color: var(--color-accent-cyan);
   font-weight: 600;
   margin: 0;
 }
 
-.statsGrid {
+/* Two-column layout for Experience + Education */
+.twoCol {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-md);
-  margin-bottom: var(--space-2xl);
-
-  @media (min-width: 640px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xl);
 
   @media (min-width: 1024px) {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
   }
 }
 
 .expSection,
-.eduSection,
-.skillsSection,
-.pdfSection {
-  margin-bottom: var(--space-2xl);
+.eduSection {
+  margin-bottom: 0;
 }
 
 .sectionTitle {
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
   font-weight: 700;
   color: var(--color-text-primary);
-  margin: 0 0 var(--space-lg);
+  margin: 0 0 var(--space-md);
   letter-spacing: -0.02em;
 }
 
+/* Experience list — compact cards */
 .expList {
   display: flex;
   flex-direction: column;
@@ -168,13 +145,13 @@
   grid-template-columns: auto 1fr auto;
   gap: var(--space-md);
   align-items: start;
-  padding: var(--space-lg);
+  padding: var(--space-md) var(--space-lg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-left: 4px solid var(--color-accent-cyan);
+  border-left: 3px solid var(--color-accent-cyan);
 
   @media (prefers-reduced-motion: reduce) {
     &:hover {
@@ -201,17 +178,17 @@
 .expRole {
   font-weight: 600;
   color: var(--color-text-primary);
-  font-size: 1rem;
+  font-size: 0.9375rem;
 }
 
 .expPeriod {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: var(--color-text-muted);
 }
 
 .expIconWrap {
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   color: var(--color-accent-cyan);
   align-self: center;
   justify-self: end;
@@ -225,14 +202,14 @@
 }
 
 .expLocation {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: var(--color-text-muted);
-  margin: var(--space-xs) 0 var(--space-md);
+  margin: var(--space-xs) 0 var(--space-sm);
   grid-column: 1;
 }
 
 .expStack {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: var(--color-accent-cyan);
   font-weight: 500;
   margin: 0 0 var(--space-sm);
@@ -244,25 +221,18 @@
 }
 
 .expDesc {
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   color: var(--color-text-secondary);
   line-height: 1.6;
   margin: 0;
   grid-column: 1 / -1;
 }
 
-.eduGrid {
-  display: grid;
-  grid-template-columns: 1fr;
+/* Education list — compact */
+.eduList {
+  display: flex;
+  flex-direction: column;
   gap: var(--space-md);
-
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (min-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
 
 .eduCard {
@@ -271,7 +241,7 @@
   z-index: 1;
   display: flex;
   gap: var(--space-md);
-  padding: var(--space-lg);
+  padding: var(--space-md) var(--space-lg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background: var(--glass-bg);
@@ -281,8 +251,8 @@
 
 .eduIconWrap {
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
+  width: 28px;
+  height: 28px;
   color: var(--color-accent-purple);
 }
 
@@ -296,13 +266,18 @@
   font-weight: 600;
   color: var(--color-text-primary);
   margin: 0;
-  font-size: 1rem;
+  font-size: 0.9375rem;
 }
 
 .eduYear {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: var(--color-text-muted);
   margin: 0;
+}
+
+/* Skills — compact tags */
+.skillsSection {
+  margin-bottom: var(--space-xl);
 }
 
 .skillsGrid {
@@ -323,7 +298,7 @@
   @extend %hoverLift;
   position: relative;
   z-index: 1;
-  padding: var(--space-lg);
+  padding: var(--space-md) var(--space-lg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background: var(--glass-bg);
@@ -335,7 +310,7 @@
   font-weight: 600;
   color: var(--color-text-primary);
   margin: 0 0 var(--space-sm);
-  font-size: 1rem;
+  font-size: 0.9375rem;
 }
 
 .skillList {
@@ -351,10 +326,10 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-xs);
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: var(--color-text-secondary);
   background: var(--color-bg-base);
-  padding: calc(var(--space-xs) * 1.5) var(--space-sm);
+  padding: calc(var(--space-xs) * 1.2) var(--space-sm);
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border);
   white-space: nowrap;
@@ -367,36 +342,29 @@
   color: var(--color-accent-cyan);
 }
 
+/* PDF section — inline buttons */
 .pdfSection {
   text-align: center;
 }
 
 .pdfLabel {
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--color-text-primary);
-  margin: 0 0 var(--space-md);
+  display: none; /* inline buttons don't need label */
 }
 
 .pdfLinks {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: var(--space-sm);
-  align-items: center;
-
-  @media (min-width: 640px) {
-    flex-direction: row;
-    justify-content: center;
-  }
+  justify-content: center;
 }
 
 .pdfBtn {
   display: inline-flex;
   align-items: center;
   gap: var(--space-sm);
-  font-size: 1rem;
+  font-size: 0.9375rem;
   font-weight: 600;
-  padding: 0.875rem 1.75rem;
+  padding: 0.75rem 1.5rem;
   border-radius: var(--radius-md);
   text-decoration: none;
   max-width: fit-content;
