@@ -2,13 +2,14 @@
   "name": "portfolio",
   "version": "1.0.0",
   "description": "Портфолио на Next.js, React 19, TypeScript, SCSS",
-  "main": "index.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
     "test": "vitest",
+    "test:run": "vitest run",
     "test:ui": "vitest --ui",
     "report-gap": "node .cline/runtime/scripts/report-gap.js"
   },
@@ -18,6 +19,7 @@
   "type": "module",
   "dependencies": {
     "next": "^16.4.5",
+    "next-themes": "^0.4.6",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
   },

@@ -2,15 +2,8 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  sassOptions: {
-    includePaths: ['./styles'],
-  },
-  images: {
-    domains: [],
-  },
   turbopack: {
-    // Алиасы подхватываются из tsconfig.json (compilerOptions.paths).
-    // Явное дублирование не требуется, но блок оставил для расширения.
+    // SVG импортируются как React-компоненты (см. src/shared/types/svg.d.ts)
     rules: {
       '*.svg': {
         loaders: ['@svgr/webpack'],
