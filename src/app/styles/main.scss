@@ -1,0 +1,4 @@
+// Глобальные стили. Подключается один раз в app/layout.tsx.
+@use '../../shared/styles/tokens';
+@use 'themes';
+@use 'base';

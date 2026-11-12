@@ -1,0 +1,46 @@
+@use '@/shared/styles/mixins' as *;
+
+.intro {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  padding-bottom: var(--space-xl);
+  border-bottom: 1px solid var(--color-border);
+
+  @include down(md) {
+    flex-direction: column;
+    gap: var(--space-md);
+    text-align: center;
+  }
+}
+
+// Круглый аватар-заглушка: внешний размер задаёт padding вокруг иконки
+.avatar {
+  @include gradient-bg;
+  box-sizing: content-box;
+  padding: 1.25rem;
+  color: white;
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 1.5rem accent(40%);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  min-width: 0;
+}
+
+.name {
+  margin: 0;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.role {
+  margin: 0;
+  font-size: clamp(0.875rem, 1.2vw, 1rem);
+  font-weight: 600;
+  color: var(--color-accent-cyan);
+}

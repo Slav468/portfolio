@@ -1,0 +1,109 @@
+@use '@/shared/styles/mixins' as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  font-family: inherit;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    gap 0.2s ease,
+    transform 0.3s var(--ease-spring);
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+// ── размеры ──
+.sm {
+  padding: 0.5rem 0.875rem;
+  font-size: 0.875rem;
+  border-radius: var(--radius-sm);
+}
+
+.md {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9375rem;
+  border-radius: var(--radius-md);
+}
+
+.lg {
+  padding: 0.875rem 1.75rem;
+  font-size: 1rem;
+  border-radius: var(--radius-md);
+}
+
+// ── варианты ──
+.primary {
+  background: var(--color-accent-cyan);
+  color: var(--color-bg-base);
+  border-color: var(--color-accent-cyan);
+
+  &:hover {
+    background: color-mix(in oklch, var(--color-accent-cyan) 90%, white);
+    box-shadow: 0 8px 24px color-mix(in oklch, var(--color-accent-cyan) 35%, black);
+  }
+}
+
+.secondary {
+  background: transparent;
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+
+  &:hover {
+    color: var(--color-accent-cyan);
+    border-color: var(--color-accent-cyan);
+  }
+}
+
+.outline {
+  background: transparent;
+  color: var(--color-accent-cyan);
+  border-color: accent(30%);
+
+  &:hover {
+    background: var(--color-accent-cyan);
+    color: var(--color-bg-base);
+    border-color: var(--color-accent-cyan);
+  }
+}
+
+.text {
+  padding: 0;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-accent-cyan);
+  border-radius: var(--radius-sm);
+
+  &:hover {
+    color: var(--color-accent-purple);
+    gap: 0.75rem;
+  }
+}
+
+// Подъём при наведении — только для «кнопочных» вариантов и без reduced-motion
+.primary,
+.secondary,
+.outline {
+  @include motion-ok {
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+}

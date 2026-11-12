@@ -1,0 +1,16 @@
+.slot {
+  display: inline-flex;
+  flex-shrink: 0;
+  width: var(--icon-size);
+  height: var(--icon-size);
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.brand svg {
+  fill: currentColor;
+}

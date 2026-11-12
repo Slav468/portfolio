@@ -1,0 +1,22 @@
+@use '@/shared/styles/mixins' as *;
+
+.link {
+  @include visually-hidden;
+
+  &:focus {
+    position: fixed;
+    top: var(--space-sm);
+    left: var(--space-sm);
+    z-index: 100;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: var(--space-sm) var(--space-md);
+    clip-path: none;
+    font-weight: 600;
+    color: var(--color-bg-base);
+    background: var(--color-accent-cyan);
+    border-radius: var(--radius-md);
+    @include focus-ring;
+  }
+}

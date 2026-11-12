@@ -1,0 +1,43 @@
+@use '@/shared/styles/mixins' as *;
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  color: var(--color-accent-cyan);
+  background: var(--color-bg-base);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+
+  &:hover {
+    color: var(--color-bg-base);
+    background: var(--color-accent-cyan);
+    border-color: transparent;
+    box-shadow: 0 0 1.5rem accent(35%);
+
+    @include motion-ok {
+      transform: translateY(-2px);
+    }
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}

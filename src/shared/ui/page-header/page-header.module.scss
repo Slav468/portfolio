@@ -1,0 +1,47 @@
+@use '@/shared/styles/mixins' as *;
+
+.header {
+  margin-bottom: var(--space-xl);
+}
+
+.kicker {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding-left: 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent-cyan);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 0.75rem;
+    height: 0.125rem;
+    background: var(--color-accent-cyan);
+    border-radius: 2px;
+    transform: translateY(-50%);
+  }
+}
+
+.title {
+  @include gradient-text;
+  margin: var(--space-sm) 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.description {
+  max-width: 56rem;
+  margin: 0;
+  font-size: clamp(0.9375rem, 1.2vw, 1.125rem);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  white-space: pre-line;
+}

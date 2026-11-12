@@ -1,0 +1,69 @@
+// Дизайн-токены (OKLCH). Единственное место, где живут значения.
+// :root — светлая тема. Тёмная переопределяет цвета через html[data-theme='dark']
+// (src/app/styles/_themes.scss). Файл подключается один раз в main.scss,
+// в CSS-модулях его подключать не нужно.
+
+:root {
+  /* Шрифты (подставляются next/font через CSS-переменные, см. src/app/fonts.ts) */
+  --font-sans: var(--font-inter), system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  /* Отступы */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+
+  /* Радиусы */
+  --radius-sm: 0.4rem;
+  --radius-md: 0.8rem;
+  --radius-lg: 1.2rem;
+  --radius-full: 9999px;
+
+  /* Контейнер */
+  --container-max: 80rem;
+
+  /* Анимации */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Тени (светлая тема) */
+  --shadow-sm: 0 0.125rem 0.25rem oklch(0 0 0 / 0.1);
+  --shadow-md: 0 0.25rem 0.5rem oklch(0 0 0 / 0.15);
+  --shadow-lg: 0 0.5rem 1rem oklch(0 0 0 / 0.2);
+  --shadow-xl: 0 1rem 3rem oklch(0 0 0 / 0.25);
+
+  /* Декоративные блобы */
+  --color-blob-cyan: oklch(0.45 0.2 185 / 0.1);
+  --color-blob-purple: oklch(0.4 0.25 275 / 0.12);
+  --color-blob-orange: oklch(0.45 0.3 35 / 0.12);
+  --color-blob-emerald: oklch(0.45 0.25 145 / 0.12);
+  --color-blob-surface: oklch(0.97 0 0 / 0.8);
+
+  /* Стекло */
+  --glass-bg: oklch(0.97 0 0 / 0.9);
+  --glass-border: oklch(0.65 0 0 / 0.8);
+  --glass-shadow: 0 25px 50px -10px oklch(0 0 0 / 0.3);
+
+  /* Цвета */
+  --color-bg-base: oklch(0.95 0 0);
+  --color-bg-surface: oklch(0.97 0 0);
+  --color-bg-elevated: oklch(0.94 0 0);
+
+  --color-text-primary: oklch(0.15 0 0);
+  --color-text-secondary: oklch(0.4 0 0);
+  --color-text-muted: oklch(0.55 0 0);
+
+  --color-accent-cyan: oklch(0.45 0.2 185);
+  --color-accent-purple: oklch(0.4 0.25 275);
+  --color-accent-orange: oklch(0.45 0.3 35);
+  --color-accent-emerald: oklch(0.45 0.25 145);
+  --color-danger: oklch(0.55 0.25 25);
+
+  --color-border: oklch(0.65 0 0);
+  --color-shadow: oklch(0 0 0 / 0.15);
+}

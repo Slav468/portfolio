@@ -1,0 +1,10 @@
+.root {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-xl) 0;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+}

@@ -1,0 +1,163 @@
+@use '@/shared/styles/mixins' as *;
+
+// По умолчанию (тач-устройства, нет hover) всё содержимое видно сразу.
+// Анимированный оверлей включается только там, где есть настоящий hover.
+
+.card {
+  @include glass-card;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.4s var(--ease-spring),
+    transform 0.4s var(--ease-spring);
+
+  &:focus-within {
+    border-color: var(--color-accent-cyan);
+  }
+}
+
+.cover {
+  flex-shrink: 0;
+
+  .featured & {
+    @include up(lg) {
+      aspect-ratio: 21 / 9;
+    }
+  }
+}
+
+.badge {
+  position: absolute;
+  top: var(--space-sm);
+  left: var(--space-sm);
+  z-index: 2;
+}
+
+.content {
+  flex: 1;
+  min-height: 0;
+  padding: var(--space-lg);
+  transition: opacity 0.3s ease;
+}
+
+.title {
+  margin: 0 0 var(--space-sm);
+  overflow: hidden;
+  font-size: clamp(1.25rem, 4vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--color-text-primary);
+}
+
+.description {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  line-clamp: 4;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: 0 var(--space-lg) var(--space-lg);
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin: 0;
+  padding: var(--space-md) 0 0;
+  list-style: none;
+  border-top: 1px solid var(--color-border);
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.more {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-accent-cyan);
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--color-accent-purple);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+@include hover-device {
+  .card {
+    min-height: 32rem;
+  }
+
+  .details {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+    padding: var(--space-lg);
+    background: linear-gradient(to top, var(--color-bg-surface) 75%, transparent);
+    opacity: 0;
+    transform: translateY(100%);
+    pointer-events: none;
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s var(--ease-spring);
+  }
+
+  .card:hover,
+  .card:focus-within {
+    background: var(--color-bg-surface);
+    border-color: var(--color-accent-cyan);
+    box-shadow:
+      0 12px 24px -8px accent(25%),
+      0 24px 48px -12px accent(18%),
+      0 0 0 1px var(--color-accent-cyan);
+
+    .content {
+      opacity: 0;
+    }
+
+    .details {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+  }
+
+  @include motion-ok {
+    .card:hover {
+      transform: translateY(-8px) scale(1.01);
+    }
+  }
+}

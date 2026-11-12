@@ -1,0 +1,35 @@
+@use '@/shared/styles/mixins' as *;
+
+@include keyframes-float;
+
+.blobs {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.blob {
+  position: absolute;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(80px);
+
+  @include motion-ok {
+    animation: float var(--blob-duration, 12s) ease-in-out infinite alternate;
+  }
+}
+
+.cyan {
+  background: var(--color-blob-cyan);
+}
+
+.purple {
+  background: var(--color-blob-purple);
+}
+
+.emerald {
+  background: var(--color-blob-emerald);
+}

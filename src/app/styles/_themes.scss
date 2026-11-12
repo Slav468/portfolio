@@ -1,0 +1,42 @@
+// Тёмная тема. Переключение — атрибут data-theme на <html> (next-themes, см. ThemeProvider).
+// Токены светлой темы — в shared/styles/_tokens.scss (:root).
+
+html {
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+// Селектор html[data-theme='dark'] специфичнее :root и поэтому перекрывает светлые токены.
+html[data-theme='dark'] {
+  --color-bg-base: oklch(0.15 0 0);
+  --color-bg-surface: oklch(0.2 0 0);
+  --color-bg-elevated: oklch(0.26 0 0);
+
+  --color-text-primary: oklch(0.98 0 0);
+  --color-text-secondary: oklch(0.7 0 0);
+  --color-text-muted: oklch(0.5 0 0);
+
+  --color-accent-cyan: oklch(0.78 0.25 180);
+  --color-accent-purple: oklch(0.72 0.3 270);
+  --color-accent-orange: oklch(0.68 0.35 30);
+  --color-accent-emerald: oklch(0.7 0.25 140);
+
+  --color-border: oklch(0.38 0 0);
+  --color-shadow: oklch(0 0 0 / 0.4);
+
+  --shadow-sm: 0 0.125rem 0.25rem var(--color-shadow);
+  --shadow-md: 0 0.25rem 0.5rem var(--color-shadow);
+  --shadow-lg: 0 0.5rem 1rem var(--color-shadow);
+  --shadow-xl: 0 1rem 3rem var(--color-shadow);
+
+  --color-blob-cyan: oklch(0.78 0.25 180 / 0.18);
+  --color-blob-purple: oklch(0.72 0.3 270 / 0.15);
+  --color-blob-orange: oklch(0.68 0.35 30 / 0.15);
+  --color-blob-emerald: oklch(0.7 0.25 140 / 0.15);
+  --color-blob-surface: oklch(0.26 0 0 / 0.7);
+
+  --glass-bg: oklch(0.26 0 0 / 0.6);
+  --glass-border: oklch(0.38 0 0 / 0.5);
+  --glass-shadow: 0 25px 50px -10px var(--color-shadow);
+}

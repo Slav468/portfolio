@@ -1,0 +1,40 @@
+@use '@/shared/styles/mixins' as *;
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-auto-flow: dense;
+  gap: var(--space-lg);
+
+  @include up(sm) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include up(lg) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+// Фиксированное число колонок (объявлено после адаптивных правил — перекрывает их)
+.cols1 {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.cols2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cols3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.item {
+  min-width: 0;
+}
+
+// Широкая карточка — только когда есть хотя бы 2 колонки
+.wide {
+  @include up(sm) {
+    grid-column: span 2;
+  }
+}

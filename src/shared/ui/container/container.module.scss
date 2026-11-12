@@ -1,0 +1,12 @@
+@use '@/shared/styles/mixins' as *;
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-lg);
+
+  @include up(md) {
+    padding-inline: var(--space-xl);
+  }
+}
