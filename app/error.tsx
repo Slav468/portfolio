@@ -1,17 +1,20 @@
 'use client';
 
-export default function Error({
-  error,
-  reset,
-}: {
-  error: Error;
-  reset: () => void;
-}) {
-  void error;
+import { useEffect } from 'react';
+import { Button, StatusMessage } from '@/shared/ui';
+
+export default function Error({ error, reset }: { error: Error; reset: () => void }) {
+  useEffect(() => {
+    console.error(error);
+  }, [error]);
+
   return (
-    <div>
-      <h2>Что-то пошло не так</h2>
-      <button onClick={() => reset()}>Попробовать снова</button>
-    </div>
+    <StatusMessage
+      role="alert"
+      title="Что-то пошло не так"
+      description="Произошла непредвиденная ошибка. Попробуйте ещё раз."
+    >
+      <Button onClick={reset}>Попробовать снова</Button>
+    </StatusMessage>
   );
 }

@@ -1,3 +1,5 @@
+import { StatusMessage } from '@/shared/ui';
+
 export default function Loading() {
-  return <p>Загрузка...</p>;
+  return <StatusMessage role="status" title="Загрузка…" />;
 }

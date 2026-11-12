@@ -1,8 +1,10 @@
+import { ROUTES } from '@/shared/config';
+import { ButtonLink, StatusMessage } from '@/shared/ui';
+
 export default function NotFound() {
   return (
-    <main>
-      <h1>Страница не найдена</h1>
-      <p>Запрошенная страница не существует.</p>
-    </main>
+    <StatusMessage title="Страница не найдена" description="Запрошенная страница не существует.">
+      <ButtonLink href={ROUTES.home}>На главную</ButtonLink>
+    </StatusMessage>
   );
 }
