@@ -16,6 +16,7 @@ export interface RevealProps extends HTMLAttributes<HTMLDivElement> {
  * Плавное появление блока при попадании в область просмотра.
  * Единственная реализация reveal-анимации в проекте.
  */
+
 export function Reveal({
   delay = 0,
   once = true,

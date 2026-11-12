@@ -5,7 +5,6 @@ import {
   ButtonLink,
   ClockIcon,
   CodeIcon,
-  Container,
   FloatingIcons,
   IconSlot,
   Reveal,
@@ -31,11 +30,15 @@ export function HeroSection() {
   const { kicker, title, description, primaryCta, githubCta } = HERO_CONTENT;
 
   return (
-    <Container>
+    <>
       <section className={styles.section} aria-labelledby="hero-title">
         <BackgroundBlobs count={2} />
         <div className={styles.glass} aria-hidden="true" />
-        <FloatingIcons items={HERO_TECH.map((name) => <TechIcon key={name} name={name} size="100%" />)} />
+        <FloatingIcons
+          items={HERO_TECH.map((name) => (
+            <TechIcon key={name} name={name} size="100%" />
+          ))}
+        />
 
         <div className={styles.content}>
           <Reveal className={styles.text}>
@@ -75,6 +78,6 @@ export function HeroSection() {
           </div>
         </div>
       </section>
-    </Container>
+    </>
   );
 }

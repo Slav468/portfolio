@@ -22,7 +22,7 @@ export function ProjectGrid({
   className,
 }: ProjectGridProps) {
   return (
-    <div className={cx(styles.grid, columns && styles[`cols${columns}`], className)}>
+    <section className={cx(styles.grid, columns && styles[`cols${columns}`], className)}>
       {projects.map((project, index) => {
         const wide = emphasizeFeatured && project.featured;
         return (
@@ -35,6 +35,6 @@ export function ProjectGrid({
           </Reveal>
         );
       })}
-    </div>
+    </section>
   );
 }

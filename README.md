@@ -16,7 +16,7 @@ npm run test:run    # Vitest, один прогон
 Между слайсами — только через публичный API (`index.ts`). Оба правила проверяет ESLint
 (`no-restricted-imports` в `eslint.config.js`).
 
-```
+```txt
 app/                    Next.js-роуты: только metadata + рендер страницы из views
 src/
 ├─ app/                 FSD-слой app: провайдеры, шрифты, глобальные стили, AppShell
